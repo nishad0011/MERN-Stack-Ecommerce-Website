@@ -10,7 +10,16 @@ INSTALLS:
     Packages:
         - npm i express mongoose dotenv
         - npm i dotenv (for config.env file)
-        - npm i nodemon
+        - npm i nodemon (auto restart server on changes)
+
+        - npm i bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser
+        (
+            bcrypt - encrypting passwords
+            jsonwebtoken - Creating user session token
+            nodemailer - send emails
+            cookie-parser - cookies
+            body-parser - data transformation
+        )
 
     -npm list -g (check installed global packages)
 
@@ -22,7 +31,7 @@ THEORY:
 STAGES:
     1 Basic setup
     2. MongoDB connection
-    3. Creating schemas.
+    3. Creating product schema.
     4. Creating products API 
         create, 
         get all,
@@ -36,4 +45,14 @@ STAGES:
         - env file error
         - db connection error (unhandled promise rejection)
         - uncaught exception error
+    6. Search filter pagination
+        - find()
+        - filter()
+        - pagination()
+    7. Authentication
+        - user schema created
+        - user controller created
+        - jwtToken.js
+        - token verification
+        - password reset using email
         
