@@ -12,7 +12,7 @@ const router = express.Router();
 router.route("/products").get(getAllProducts);
 router.route("/product/new").post(isAuthenticatedUser, authorizeRoles('admin'), createProduct);
 
-//Update and Delete method on same route.
+//Update, Delete and Get method on same route.
 router.route('/product/:id')
     .put(isAuthenticatedUser, authorizeRoles('admin'), updateProduct)
     .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteProduct)

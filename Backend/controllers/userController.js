@@ -95,7 +95,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     }
 });
 
-// Reset Password using link
+// Forgot Password Reset using link
 exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 
     // Creating token hash
@@ -124,4 +124,67 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
     await user.save();
 
     sendToken(user, 200, res);
+})
+
+// et user details
+exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+        return next(new ErrorHandler("Invalid User", 400));
+    }
+
+    res.status(200).json({
+        success: true,
+        user
+    })
+})
+
+//Update user password
+exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id).select("+password");
+
+    if (!user) {
+        return next(new ErrorHandler("Invalid User", 400));
+    }
+
+    const isPasswordCorrect = await user.comparePassword(req.body.oldPassword);
+    if (!isPasswordCorrect) {
+        return next(new ErrorHandler("Invalid OldPassword", 401));
+    }
+
+    if (req.body.newPassword !== req.body.confirmPassword) {
+        return next(new ErrorHandler("New Password and Confirm password do not match", 401));
+    }
+
+    user.password = req.body.newPassword;
+
+    await user.save()
+
+    sendToken(user, 200, res);
+})
+
+//Update User Profile
+exports.updateUserData = catchAsyncErrors(async (req, res, next) => {
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+    }
+
+    const user = await User.findByIdAndUpdate(
+        req.user.id,
+        newUserData,
+        {
+            new: true, // return the modified document instead of original
+            runValidators: true,
+            useFindAndModify: false
+        }
+    )
+
+    //await user.save()
+
+    res.status(200).json({
+        success: true,
+        message: "Update successful"
+    })
 })
