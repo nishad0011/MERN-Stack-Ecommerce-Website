@@ -126,7 +126,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
     sendToken(user, 200, res);
 })
 
-// et user details
+// Get user details
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.user.id);
 
@@ -186,5 +186,75 @@ exports.updateUserData = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true,
         message: "Update successful"
+    })
+})
+
+// Get all users (ADMIN)
+exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
+    const users = await User.find();
+
+    res.status(200).json({
+        success: true,
+        users
+    });
+});
+
+// Get single user (ADMIN)
+exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(new ErrorHandler("No user Found", 404))
+    }
+
+    res.status(200).json({
+        success: true,
+        user
+    });
+});
+
+//Update User Role (ADMIN)
+exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role,
+    }
+
+    console.log(newUserData);
+
+    const user = await User.findByIdAndUpdate(
+        req.params.id,
+        newUserData,
+        {
+            new: true, // return the modified document instead of original
+            runValidators: true,
+            useFindAndModify: false
+        }
+    )
+
+    res.status(200).json({
+        success: true,
+        message: "Update successful",
+        user
+    })
+})
+
+// Delete user (ADMIN)
+exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(new ErrorHandler("No User Found", 400));
+    }
+
+    //Cloudinary data handling
+
+
+    await user.deleteOne();
+
+    res.status(200).json({
+        success: true,
+        user
     })
 })
