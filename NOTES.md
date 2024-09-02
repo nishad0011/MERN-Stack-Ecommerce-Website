@@ -8,6 +8,7 @@ INSTALLS:
             entry point: (index.js) backend/server.js
     
     Packages:
+        Backend
         - npm i express mongoose dotenv
         - npm i dotenv (for config.env file)
         - npm i nodemon (auto restart server on changes)
@@ -21,12 +22,36 @@ INSTALLS:
             body-parser - data transformation
         )
 
+        frontend
+        - npm i axios 
+            react-alert 
+            react-alert-template-basic 
+            react-helmet 
+            react-redux 
+            react-icons
+            redux 
+            redux-thunk 
+            redux-devtools-extension 
+            react-router-dom 
+            overlay-navbar
+            (--legacy-peer-deps  )
+
     -npm list -g (check installed global packages)
 
 THEORY:
     EXPRESS:
         - Middleware.
         - Provides funtionality to node.
+
+    CSS:
+        - position 
+            - absolute
+            - sticky
+
+        - sizes
+            - vmin
+            - em
+
 
 STAGES:
     1 Basic setup
@@ -65,5 +90,7 @@ STAGES:
         - orderController.js 
         - orderRoutes.js
 
+    Frontend
+    12. 
 
         
