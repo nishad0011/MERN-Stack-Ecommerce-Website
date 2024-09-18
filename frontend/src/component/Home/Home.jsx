@@ -1,45 +1,57 @@
-import React, { Fragment } from 'react';
-import {CgMouse} from "react-icons/cg";
-import "./home.css"
+import React, { Fragment, useEffect } from "react";
+import { CgMouse } from "react-icons/cg";
+import "./home.css";
+import { useSelector, useDispatch } from "react-redux";
 
-import Product from "./Product.js"
+import Product from "./ProductCard.js";
+import Metadata from "../layout/Metadata.js";
 
-//Temporary product
-const product = {
-    name:"Blue Tshirt",
-    images:[{url:"https://i.ibb.co/DRST11n/1.webp"}],
-    price:"💲50",
-    _id:"nishad"
-}
+import { clearErrors, getProduct } from "../../actions/productAction.js";
+import { useAlert } from "react-alert";
+
+import Loader from "../layout/Loader/Loader";
 
 const Home = () => {
-    return (
-        <Fragment>
-            <div className='banner'>
-                <p>Welcome to Ecommerce</p>
-                <h1>Find Products Below</h1>
+  const alert = useAlert();
 
-                <a href="#container">
-                    <button>
-                        Scroll <CgMouse/>
-                    </button>
-                </a>
-            </div>
+  const dispatch = useDispatch();
+  //const {loading, error,products,productsCount} = useSelector(state=>state.products);
+  const { loading, products, error } = useSelector((state) => state.products);
 
-            <h2 className="homeheading">Featured Products</h2>
-            <div className="container" id='container'>
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-            </div>
-        </Fragment>
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getProduct());
+  }, [dispatch, error, alert]);
 
-    )
-}
+  if (loading) {
+    return <Loader />;
+  }
+
+  return (
+    <Fragment>
+      <Metadata title="SUPERCOM" />
+
+      <div className="banner">
+        <p>Welcome to Ecommerce</p>
+        <h1>Find Products Below</h1>
+
+        <a href="#container">
+          <button>
+            Scroll <CgMouse />
+          </button>
+        </a>
+      </div>
+
+      <h2 className="homeheading">Featured Products</h2>
+
+      <div className="container" id="container">
+        {products && products.map((product) => <Product product={product} />)}
+      </div>
+    </Fragment>
+  );
+};
 
 export default Home;

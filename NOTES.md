@@ -1,5 +1,4 @@
-INSTALLS:
-    
+INSTALLS:    
     Initial setup:
         - npm init
         -   package name: (ecommerce) ecommerce
@@ -23,10 +22,10 @@ INSTALLS:
         )
 
         frontend
-        - npm i axios 
+        - npm i axios (Promise based HTTP client)
             react-alert 
             react-alert-template-basic 
-            react-helmet 
+            react-helmet (for Page Title)
             react-redux 
             react-icons
             redux 
@@ -34,6 +33,11 @@ INSTALLS:
             redux-devtools-extension 
             react-router-dom 
             overlay-navbar
+            react-rating-stars-component
+            @reduxjs/toolkit
+            react-material-ui-carousel
+            @material-ui/core
+            @material-ui/icons
             (--legacy-peer-deps  )
 
     -npm list -g (check installed global packages)
@@ -51,6 +55,9 @@ THEORY:
         - sizes
             - vmin
             - em
+
+        - media
+            -@media (max-width:480px){}
 
 
 STAGES:
@@ -91,6 +98,10 @@ STAGES:
         - orderRoutes.js
 
     Frontend
-    12. 
+    12. Header, Footer and Home
+    13. Redux Setup
+    14. Loader Functionality
+    15. react-alert functionality 
+    16. creating reducers
 
         

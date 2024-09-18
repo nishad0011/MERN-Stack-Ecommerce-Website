@@ -46,10 +46,12 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Get all products
-exports.getAllProducts = catchAsyncErrors(async (req, res) => {
+exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
-    const resultPerPage = 5;
-    const productCount = await Product.countDocuments();
+    //return next(new ErrorHandler("this is test error", 501));
+
+    const resultPerPage = 8;
+    const productsCount = await Product.countDocuments();
 
     const apiFeature = new ApiFeatures
         (Product.find(), req.query)
@@ -62,13 +64,15 @@ exports.getAllProducts = catchAsyncErrors(async (req, res) => {
     res.status(200).json({
         success: true,
         products,
-        productCount
+        productsCount
     });
 
 });
 
 //Get single product Details
 exports.getSingleProductDetails = catchAsyncErrors(async (req, res, next) => {
+    // console.log("IN getSingleProductDetails");
+
     const product = await Product.findById(req.params.id);
     if (!product) {
         //500 - Internal server error

@@ -6,19 +6,19 @@ import "./Footer.css"
 const Footer = () => {
     return (
         <footer id="footer">
-            <div class="leftFooter">
+            <div className="leftFooter">
                 <h4>SOCIALS :</h4>
-                <span class="logos"><BiLogoPlayStore size={40} /></span>
-                <span class="logos"><SiGmail size={40} /></span>
+                <span className="logos"><BiLogoPlayStore size={40} /></span>
+                <span className="logos"><SiGmail size={40} /></span>
             </div>
 
-            <div class="midFooter">
+            <div className="midFooter">
                 <h1>SuperCom</h1>
                 <p>Quaity over Quantity</p>
                 <p>Copyrights 2024 &copy; SuperCom</p>
             </div>
 
-            <div class="bottomFooter">
+            <div className="bottomFooter">
                 <h1>Follow Us</h1>
                 <a href="http://youtube.com">Youtube</a>
                 <a href="http://instagram.com">Instagram</a>
