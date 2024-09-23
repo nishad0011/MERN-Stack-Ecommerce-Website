@@ -8,6 +8,8 @@ import Header from "./component/layout/Header/Header"
 import Footer from './component/layout/Footer/Footer';
 import Home from './component/Home/Home';
 import ProductDetails from './component/Product/ProductDetails';
+import Products from './component/Product/Products.js';
+import Search from './component/Product/Search.js';
 import Loader from './component/layout/Loader/Loader';
 
 function App() {
@@ -45,6 +47,18 @@ function App() {
         {
           path: '/product/:id',
           element: <ProductDetails />
+        },
+        {
+          path: '/products',
+          element: <Products />
+        },
+        {
+          path: '/products/:keyword',
+          element: <Products />
+        },
+        {
+          path: '/search',
+          element: <Search />
         },
       ]
     },

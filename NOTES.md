@@ -38,6 +38,7 @@ INSTALLS:
             react-material-ui-carousel
             @material-ui/core
             @material-ui/icons
+            react-js-pagination
             (--legacy-peer-deps  )
 
     -npm list -g (check installed global packages)
@@ -103,5 +104,6 @@ STAGES:
     14. Loader Functionality
     15. react-alert functionality 
     16. creating reducers
-
-        
+    17. Creating Product Details Page
+    18. Creating All Products Page
+    19. Adding Pagination to all Products page

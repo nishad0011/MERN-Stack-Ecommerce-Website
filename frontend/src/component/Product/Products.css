@@ -1,0 +1,107 @@
+.productsHeading{
+    letter-spacing: 0.5vw;
+    text-indent: 0.5vw;
+    margin:2vmax auto;
+    width: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    padding: 2vmax;
+    font: 400 2vmax "Roboto";
+    text-align: center;
+}
+
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 5vmax;
+    justify-content: center;
+}
+.noProdDiv{
+    display: flex;
+    font: 800 1.5vmax "Roboto";
+    color: rgb(103, 103, 103);
+    height:15vmax;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginationBox{
+    display: flex;
+    justify-content: center;
+    margin:6vmax;
+}
+.pagination{
+    display:flex;
+    justify-content: center;
+    padding: 0;
+
+}
+.page-item{
+    background-color: rgb(255,255,255);
+    list-style: none;
+    border:1px solid black;
+    padding: 1vmax 1.5vmax;
+    transition: all 0.3s;
+}
+.page-item:first-child{
+    border-radius: 10px 0 0 10px;
+}
+.page-item:last-child{
+    border-radius: 0 10px 10px 0 ;
+}
+.page-link{
+    text-decoration: none;
+    font:400 1.1vmax Roboto;
+    color: rgb(38, 38, 38);
+    transition: all 0.3s;
+}
+.page-item:hover{
+    background-color: rgba(1, 1, 1, 0.361);
+}
+.pageItemActive{
+    background-color: rgb(252, 64, 30);
+}
+.pageLinkActive{
+    color: rgb(245, 245, 245);
+}
+
+.filterBox{
+    width:10vmax;
+    position: absolute;
+    top: 10vmax;
+    left: 2vmax;
+}
+
+.categoryBox{
+    padding:0;
+}
+.category-link{
+    list-style:none;
+    text-align: center;
+    font: 400 1vmax Roboto;
+    margin: 0.4vmax;
+    cursor: pointer;
+    color: rgb(59, 59, 59);
+    transition: all 0.4s;
+}
+.filterBox>fieldset{
+    border:1px solid rgb(150, 150, 150)
+}
+.category-link:hover{
+    color: tomato;
+}
+
+.bg{
+    background-color: rgb(252, 64, 30);
+
+}
+
+@media screen and (max-width:640px) {
+    .filterBox{
+        width:20vmax;
+        position: static;
+        margin: auto;
+    }
+    .category-link{
+        font: 400 1.8vmax Roboto;
+    }
+}
