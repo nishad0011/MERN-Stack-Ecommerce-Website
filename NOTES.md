@@ -14,7 +14,7 @@ INSTALLS:
 
         - npm i bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser
         (
-            bcrypt - encrypting passwords
+            bcryptjs - encrypting passwords
             jsonwebtoken - Creating user session token
             nodemailer - send emails
             cookie-parser - cookies
@@ -23,23 +23,24 @@ INSTALLS:
 
         frontend
         - npm i axios (Promise based HTTP client)
-            react-alert 
-            react-alert-template-basic 
-            react-helmet (for Page Title)
-            react-redux 
-            react-icons
-            redux 
-            redux-thunk 
-            redux-devtools-extension 
-            react-router-dom 
-            overlay-navbar
-            react-rating-stars-component
-            @reduxjs/toolkit
-            react-material-ui-carousel
-            @material-ui/core
-            @material-ui/icons
-            react-js-pagination
-            (--legacy-peer-deps  )
+                react-alert 
+                react-alert-template-basic 
+                react-helmet (for Page Title)
+                react-redux 
+                react-icons
+                redux 
+                redux-thunk 
+                redux-devtools-extension 
+                react-router-dom 
+                overlay-navbar
+                react-rating-stars-component
+                @reduxjs/toolkit
+                react-material-ui-carousel
+                @material-ui/core
+                @material-ui/icons
+                react-js-pagination
+                express-fileupload cloudinary
+            (--legacy-peer-deps  ) //Add this if errors
 
     -npm list -g (check installed global packages)
 
@@ -65,6 +66,7 @@ STAGES:
     1 Basic setup
     2. MongoDB connection
     3. Creating product schema.
+
     4. Creating products API 
         (create,get all,update,delete,getOne)
         productSchema->productController->productRoute
@@ -107,3 +109,7 @@ STAGES:
     17. Creating Product Details Page
     18. Creating All Products Page
     19. Adding Pagination to all Products page
+    20. Search Filters
+    21. Creating Login/Signup Page 
+    22. Image upload during register using express-fileupload and cloudinary
+    23. Redirect form /login page to /account once user is logged-in

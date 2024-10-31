@@ -2,9 +2,13 @@
 const express = require("express");
 const app = express();
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const fileUpload = require('express-fileupload')
 
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 //Routes
 const products = require("./routes/productRoute");
