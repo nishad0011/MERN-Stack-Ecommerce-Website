@@ -4,6 +4,7 @@ import './App.css';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import WebFont from "webfontloader"
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // USER CREATED
 import Header from "./component/layout/Header/Header"
@@ -16,6 +17,13 @@ import Loader from './component/layout/Loader/Loader';
 import LoginSignUp from './component/User/LoginSignUp.js';
 import store from "./store.js"
 import { loadUser } from './actions/userAction.js';
+import UserOptions from "./component/layout/Header/UserOptions.js"
+import Profile from "./component/User/Profile.js"
+import ProtectedRoute from "./component/Route/ProtectedRoute.js"
+import UpdateProfile from './component/User/UpdateProfile.js';
+import UpdatePassword from './component/User/UpdatePassword.js';
+import ForgotPassword from './component/User/ForgotPassword.js';
+import ResetPassword from './component/User/ResetPassword.js';
 
 function App() {
   React.useEffect(() => {
@@ -27,10 +35,15 @@ function App() {
     store.dispatch(loadUser())
   }, []);
 
+  const { isAuthenticated, user } = useSelector(state => {
+    return (state.user)
+  })
+
   function Layout() {
     return (
       <>
         <Header />
+        {isAuthenticated && <UserOptions user={user} />}
         <Outlet />
         <Footer />
       </>
@@ -68,6 +81,35 @@ function App() {
         {
           path: '/login',
           element: <LoginSignUp />
+        },
+        {
+          path: '/profile',
+          element:
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <Profile />
+            </ProtectedRoute>
+        },
+        {
+          path: '/me/update',
+          element:
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <UpdateProfile />
+            </ProtectedRoute>
+        },
+        {
+          path: '/password/update',
+          element:
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <UpdatePassword />
+            </ProtectedRoute>
+        },
+        {
+          path: '/password/forgot',
+          element: <ForgotPassword />
+        },
+        {
+          path: '/password/reset/:token',
+          element: <ResetPassword />
         },
       ]
     },

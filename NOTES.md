@@ -39,7 +39,8 @@ INSTALLS:
                 @material-ui/core
                 @material-ui/icons
                 react-js-pagination
-                express-fileupload cloudinary
+                express-fileupload 
+                cloudinary
             (--legacy-peer-deps  ) //Add this if errors
 
     -npm list -g (check installed global packages)
@@ -113,3 +114,7 @@ STAGES:
     21. Creating Login/Signup Page 
     22. Image upload during register using express-fileupload and cloudinary
     23. Redirect form /login page to /account once user is logged-in
+    24. Creating profile Page
+    25. Creating Update profile Page
+    26. Change password Functionality
+    27. Implementing forgot password functionality by sending link to email address of user.

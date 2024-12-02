@@ -24,6 +24,7 @@ const LoginSignUp = () => {
 
   const { error, loading, isAuthenticated } = useSelector(state => state.user)
 
+
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPass, setLoginPass] = useState("");
 
@@ -78,12 +79,12 @@ const LoginSignUp = () => {
 
 
   useEffect(() => {
-    if (error) {
+    if (error && (error != "Please Login to access resource")) {
       alert.error(error)
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate(`/account`);
+      navigate(`/profile`);
     }
 
   }, [dispatch, error, alert, isAuthenticated])
