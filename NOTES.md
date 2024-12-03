@@ -50,7 +50,16 @@ THEORY:
         - Middleware.
         - Provides funtionality to node.
 
+    JS:
+        - input
+            - readOnly (makes input unselectable)
+
     CSS:
+        - text align
+            -   display: flex;
+                align-items: center; (vertically)
+                justify-content: center; (horizontally)
+
         - position 
             - absolute
             - sticky
@@ -61,6 +70,9 @@ THEORY:
 
         - media
             -@media (max-width:480px){}
+
+        - input
+            - input:focus{outline: none;}
 
 
 STAGES:

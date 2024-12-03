@@ -24,6 +24,7 @@ import UpdateProfile from './component/User/UpdateProfile.js';
 import UpdatePassword from './component/User/UpdatePassword.js';
 import ForgotPassword from './component/User/ForgotPassword.js';
 import ResetPassword from './component/User/ResetPassword.js';
+import Cart from './component/Cart/Cart.js';
 
 function App() {
   React.useEffect(() => {
@@ -35,7 +36,7 @@ function App() {
     store.dispatch(loadUser())
   }, []);
 
-  const { isAuthenticated, user } = useSelector(state => {
+  const { isAuthenticated, loading, user } = useSelector(state => {
     return (state.user)
   })
 
@@ -99,7 +100,7 @@ function App() {
         {
           path: '/password/update',
           element:
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <ProtectedRoute isAuthenticated={isAuthenticated} loading={loading}>
               <UpdatePassword />
             </ProtectedRoute>
         },
@@ -110,6 +111,11 @@ function App() {
         {
           path: '/password/reset/:token',
           element: <ResetPassword />
+        },
+        {
+          path: '/cart',
+          element:
+            <Cart />
         },
       ]
     },

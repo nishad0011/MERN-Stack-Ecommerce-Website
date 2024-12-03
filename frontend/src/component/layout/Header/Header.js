@@ -10,7 +10,7 @@ const Header = () => {
             link3Text="Contact"
             link4Text="About"
             link1Url="/"
-            link2Url="/product"
+            link2Url="/products"
             link3Url="/contact"
             link4Url="/about"
             logo={<FaBandcamp />}

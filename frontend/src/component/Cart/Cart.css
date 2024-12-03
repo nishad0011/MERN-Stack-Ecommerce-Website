@@ -1,0 +1,114 @@
+.cartPage{
+    padding: 5vmax;
+}
+.cartHeader{
+    background-color: tomato;
+    width: 90%;
+    box-sizing: border-box;
+    display: grid;
+    color: white;
+    margin: auto;
+    font: 400 1.5vmax "Roboto";
+    grid-template-columns: 5fr 2fr 2fr  ;
+}
+.cartHeader>p{
+    margin: 10px;
+    text-align: left;
+
+}
+.cartHeader>p:last-child{
+    text-align: right;
+
+}
+.cartContainer{
+    display: grid;
+    width: 90%;
+    margin: auto;
+    grid-template-columns: 5fr 2fr 2fr ;
+    box-sizing: border-box;
+}
+.cartInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vmax;
+}
+.cartInput>input{
+    text-align: center;
+    padding: 0.5vmax;
+    width: 5vmax;
+    border: none;
+}
+.cartInput>input:focus{outline: none;}
+
+.cartInput>button{
+    border: none;
+    background-color: rgba(0,0,0,0.600);
+    transition: all 0.5s;
+    color: white;
+    cursor: pointer;
+    padding: 0.5vmax;
+}
+.cartSubtotal{
+    text-align: end;
+    padding: 0.5vmax;
+    height: 8vmax;
+    align-self: center;
+    font: 400 1.5vmax "Roboto";
+
+}
+.cartTotal{
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+}
+.grossProfitBox{
+    border-top: 3px solid tomato;
+    margin: 1vmax 4vmax;
+    box-sizing: border-box;
+    justify-content: space-between;
+    font: 400 1.5vmax "Roboto";
+    padding: 2vmax 0;
+    display: flex;
+}
+.checkoutBtn{
+ display: flex;
+ justify-content: flex-end;
+}
+.checkoutBtn>button{
+    background-color: tomato;
+    color: white;
+    border: none;
+    padding: 0.8vmax 4vmax;
+    border-radius: 30px;
+    font: 400 1.5vmax "Roboto";
+    cursor: pointer;
+}
+
+#emptyCart{
+    font: 500 3vmax "Roboto";
+    margin: 14vmax auto;
+    width: 50%;
+    color: rgba(0, 0, 0, 0.428);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#emptyCart>a{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.796);
+    color: white;
+    border: none;
+    margin: 1vmax;
+    padding: 1vmax 2vmax;
+    font: 400 1.5vmax "Roboto";
+    cursor: pointer;
+}
+#emptyCart>a:hover{
+    background-color: rgb(0, 0, 0);
+}
+#shopcart{
+    color:  rgba(255, 99, 71, 0.515);
+    font-size: 15vmax;
+    padding: 0%;
+}
