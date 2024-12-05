@@ -41,6 +41,7 @@ INSTALLS:
                 react-js-pagination
                 express-fileupload 
                 cloudinary
+                country-state-city
             (--legacy-peer-deps  ) //Add this if errors
 
     -npm list -g (check installed global packages)
@@ -118,15 +119,18 @@ STAGES:
     13. Redux Setup
     14. Loader Functionality
     15. react-alert functionality 
-    16. creating reducers
-    17. Creating Product Details Page
-    18. Creating All Products Page
+    16. created reducers
+    17. Created Product Details Page
+    18. Created All Products Page
     19. Adding Pagination to all Products page
     20. Search Filters
-    21. Creating Login/Signup Page 
+    21. Created Login/Signup Page 
     22. Image upload during register using express-fileupload and cloudinary
     23. Redirect form /login page to /account once user is logged-in
-    24. Creating profile Page
-    25. Creating Update profile Page
+    24. Created profile Page
+    25. Created Update profile Page
     26. Change password Functionality
     27. Implementing forgot password functionality by sending link to email address of user.
+    28. Add to cart functionality on Product details page.
+    29. Created Cart View Page
+    30. Created checkout and confirm order page

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { MdRemoveShoppingCart } from "react-icons/md";
 
@@ -13,6 +13,7 @@ import {
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -33,6 +34,10 @@ const Cart = () => {
       dispatch(addItemsToCart(id, newQty));
     }
   };
+
+  const checkoutHandler = () => {
+    navigate("/login?redirect=shipping")
+  }
 
   return (
     <>
@@ -76,11 +81,13 @@ const Cart = () => {
             <div></div>
             <div className="grossProfitBox">
               <p>Gross Total</p>
-              <p>{"600"}</p>
+              <p>{`₹ ${cartItems.reduce(
+                (acc, item) => acc + (item.quantity * item.price), 0
+              )}`}</p>
             </div>
             <div></div>
             <div className="checkoutBtn">
-              <button>Checkout</button>
+              <button onClick={checkoutHandler}>Checkout</button>
             </div>
           </div>
         </div>

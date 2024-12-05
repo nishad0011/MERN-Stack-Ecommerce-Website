@@ -25,6 +25,8 @@ import UpdatePassword from './component/User/UpdatePassword.js';
 import ForgotPassword from './component/User/ForgotPassword.js';
 import ResetPassword from './component/User/ResetPassword.js';
 import Cart from './component/Cart/Cart.js';
+import Shipping from './component/Cart/Shipping.js';
+import ConfirmOrder from './component/Cart/ConfirmOrder.js';
 
 function App() {
   React.useEffect(() => {
@@ -38,6 +40,9 @@ function App() {
 
   const { isAuthenticated, loading, user } = useSelector(state => {
     return (state.user)
+  })
+  const { shippingInfo } = useSelector(state => {
+    return (state.cart)
   })
 
   function Layout() {
@@ -116,6 +121,20 @@ function App() {
           path: '/cart',
           element:
             <Cart />
+        },
+        {
+          path: '/shipping',
+          element:
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <Shipping />
+            </ProtectedRoute>
+        },
+        {
+          path: '/order/confirm',
+          element:
+            <ProtectedRoute isAuthenticated={isAuthenticated} >
+              <ConfirmOrder />
+            </ProtectedRoute>
         },
       ]
     },

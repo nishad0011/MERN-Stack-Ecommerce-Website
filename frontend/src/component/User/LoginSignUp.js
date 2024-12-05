@@ -1,8 +1,8 @@
-import React, { Fragment, useRef, useState, useEffect } from "react";
+import React, { Fragment, useRef, useState, useEffect, } from "react";
 import "./LoginSignUp.css";
 import { MdOutlineMail, MdLockOpen } from "react-icons/md";
 import { BiFace } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert"
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,8 @@ const LoginSignUp = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate();
+  const location = useLocation();
+  // console.log("location = ", location);
 
 
   const loginTab = useRef(null);
@@ -76,7 +78,8 @@ const LoginSignUp = () => {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
-
+  const redirect = location.search ? ("/" + location.search.split("=")[1]) : "/profile"
+  console.log("redirect = ", redirect)
 
   useEffect(() => {
     if (error && (error != "Please Login to access resource")) {
@@ -84,7 +87,7 @@ const LoginSignUp = () => {
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate(`/profile`);
+      navigate(redirect, { replace: true });
     }
 
   }, [dispatch, error, alert, isAuthenticated])

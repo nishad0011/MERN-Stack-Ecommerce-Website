@@ -1,0 +1,33 @@
+
+.confirmOrderPage{
+    height: 100vh;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 6fr 3fr;
+}
+.confirmOrderPage > div:last-child{
+    border-left: 1px solid rgb(0, 0, 0);
+}
+.confirmShippingArea{
+    padding:5vmax;
+    padding-bottom: 0%;
+}
+.confirmShippingArea>p{
+    font: 400 3.0vmax "Roboto";
+    text-align: left;
+    padding: 2vmax;
+}
+.confirmShippingAreaBox,
+.confirmCartItemsContainer{
+    margin:1vmax;
+    font: 200 2.0vmax "Roboto";
+
+}
+.confirmShippingAreaBox>div{
+    display: flex;
+    margin:1vmax;
+}
+.confirmShippingAreaBox>p{
+    font: 400 1.0vmax "Roboto";
+    color:black
+}

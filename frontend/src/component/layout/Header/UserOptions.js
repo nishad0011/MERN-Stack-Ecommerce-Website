@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab"
@@ -21,10 +21,18 @@ const UserOptions = ({ user }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const { cartItems } = useSelector((state) => state.cart)
     const [open, setOpen] = useState(false)
 
     const options = [
-        { icon: <CiShoppingCart />, name: 'Orders', func: orders },
+        {
+            icon: <CiShoppingCart />,
+            name:
+                cartItems.length >= 1
+                    ? `Cart(${cartItems.length})`
+                    : `Cart`,
+            func: orders
+        },
         { icon: <CgProfile />, name: 'Profile', func: profile },
         { icon: <CiLogout />, name: 'Logout', func: logout }
     ]
@@ -71,6 +79,7 @@ const UserOptions = ({ user }) => {
                         icon={item.icon}
                         tooltipTitle={item.name}
                         onClick={item.func}
+                        tooltipOpen={window.innerWidth <= 600 ? true : false}
                     />
                 ))}
 

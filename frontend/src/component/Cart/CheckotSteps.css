@@ -1,0 +1,9 @@
+.MuiStepConnector-root{
+    height: 1.7px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.269);
+}
+.MuiStepConnector-active,
+.MuiStepConnector-completed{
+    background-color: tomato;
+}
