@@ -1,15 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Metadata from "../layout/Metadata";
 import CheckoutSteps from "./CheckoutSteps.js";
 import { Typography } from "@material-ui/core";
 import "./confirmOrder.css";
+import { useEffect } from "react";
+import { useAlert } from "react-alert";
+import { createOrder, clearErrors } from "../../actions/orderAction.js";
 
 const ConfirmOrder = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const alert = useAlert();
+
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
+
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
@@ -18,6 +27,19 @@ const ConfirmOrder = () => {
   const shippingCharges = subtotal > 1000 ? 0 : 200;
   const tax = subtotal * 0.18;
   const totalPrice = subtotal + shippingCharges + tax;
+
+
+  const proceedToPayment = () => {
+    const data = {
+      subtotal,
+      shippingCharges,
+      totalPrice,
+      tax,
+    };
+    sessionStorage.setItem("orderInfo", JSON.stringify(data));
+
+    navigate("/process/payment");
+  };
 
   const fullAddress = `${shippingInfo.address}, ${shippingInfo.city} - ${shippingInfo.pinCode}, ${shippingInfo.state}, ${shippingInfo.country}`;
 
@@ -88,7 +110,7 @@ const ConfirmOrder = () => {
               </p>
               <span>₹{totalPrice}</span>
             </div>
-            <button>Proceed</button>
+            <button onClick={proceedToPayment}>Proceed</button>
           </div>
         </div>
       </div>

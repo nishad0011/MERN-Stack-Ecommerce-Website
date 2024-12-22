@@ -24,9 +24,13 @@ import UpdateProfile from './component/User/UpdateProfile.js';
 import UpdatePassword from './component/User/UpdatePassword.js';
 import ForgotPassword from './component/User/ForgotPassword.js';
 import ResetPassword from './component/User/ResetPassword.js';
+
 import Cart from './component/Cart/Cart.js';
 import Shipping from './component/Cart/Shipping.js';
 import ConfirmOrder from './component/Cart/ConfirmOrder.js';
+import Payment from './component/Cart/Payment.js';
+import PaymentSuccess from './component/Cart/PaymentSuccess.js';
+import SuccessMessage from './component/Cart/SuccessMessage.js';
 
 function App() {
   React.useEffect(() => {
@@ -91,21 +95,21 @@ function App() {
         {
           path: '/profile',
           element:
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <ProtectedRoute >
               <Profile />
             </ProtectedRoute>
         },
         {
           path: '/me/update',
           element:
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <ProtectedRoute>
               <UpdateProfile />
             </ProtectedRoute>
         },
         {
           path: '/password/update',
           element:
-            <ProtectedRoute isAuthenticated={isAuthenticated} loading={loading}>
+            <ProtectedRoute /* isAuthenticated={isAuthenticated} loading={loading} */>
               <UpdatePassword />
             </ProtectedRoute>
         },
@@ -125,15 +129,36 @@ function App() {
         {
           path: '/shipping',
           element:
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <ProtectedRoute /* isAuthenticated={isAuthenticated} */>
               <Shipping />
             </ProtectedRoute>
         },
         {
           path: '/order/confirm',
           element:
-            <ProtectedRoute isAuthenticated={isAuthenticated} >
+            <ProtectedRoute /* isAuthenticated={isAuthenticated} */ >
               <ConfirmOrder />
+            </ProtectedRoute>
+        },
+        {
+          path: '/process/payment',
+          element:
+            <ProtectedRoute /* isAuthenticated={isAuthenticated} */ >
+              <Payment />
+            </ProtectedRoute>
+        },
+        {
+          path: `/process/payment/success/:id`,
+          element:
+            <ProtectedRoute >
+              <PaymentSuccess />
+            </ProtectedRoute>
+        },
+        {
+          path: `/process/payment/successmessage`,
+          element:
+            <ProtectedRoute >
+              <SuccessMessage />
             </ProtectedRoute>
         },
       ]

@@ -10,16 +10,16 @@ import "./Profile.css";
 const Profile = () => {
   const navigate = useNavigate();
 
-  const { user, loading, isAuthenticated } = useSelector((state) => state.user);
+  const { user, loading } = useSelector((state) => state.user);
 
-  console.log(user);
+  // console.log(user);
 
 
-  useEffect(() => {
-    if (isAuthenticated === false || !user) {
-      navigate(`/login`);
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   if (isAuthenticated === false || !user) {
+  //     navigate(`/login`);
+  //   }
+  // }, [navigate]);
 
   return (
     <>

@@ -13,6 +13,7 @@ INSTALLS:
         - npm i nodemon (auto restart server on changes)
 
         - npm i bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser
+        -npm i razorpay
         (
             bcryptjs - encrypting passwords
             jsonwebtoken - Creating user session token
@@ -42,6 +43,7 @@ INSTALLS:
                 express-fileupload 
                 cloudinary
                 country-state-city
+                react-razorpay
             (--legacy-peer-deps  ) //Add this if errors
 
     -npm list -g (check installed global packages)
@@ -54,6 +56,8 @@ THEORY:
     JS:
         - input
             - readOnly (makes input unselectable)
+        - wait for script to load exapmle:
+            <script async=false src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     CSS:
         - text align

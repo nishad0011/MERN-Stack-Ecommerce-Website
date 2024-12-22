@@ -23,6 +23,14 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
+// Razorpay
+const Razorpay = require('razorpay');
+const instance = new Razorpay({
+    key_id: process.env.RAZORPAY_API_KEY,
+    key_secret: process.env.RAZORPAY_API_SECRET,
+});
+exports.instance = instance
+
 const server = app.listen(
     process.env.PORT,
     () => { console.log(`Server running on port http://localhost:${process.env.PORT}`) }

@@ -27,19 +27,19 @@ const Shipping = () => {
   const [city, setCity] = useState(shippingInfo.city);
   const [state, setState] = useState(shippingInfo.state);
   const [country, setCountry] = useState(shippingInfo.country);
-  const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
-  const [phone, setPhone] = useState(shippingInfo.phone);
+  const [pincode, setPincode] = useState(shippingInfo.pincode);
+  const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
 
   const shippingSubmit = (e) => {
     e.preventDefault();
 
-    if (phone.length < 10 || phone.length > 10) {
-      alert.error("Phone Number should be 10 digit");
+    if (phoneNo.length < 10 || phoneNo.length > 10) {
+      alert.error("PhoneNo Number should be 10 digit");
       return;
     }
 
     dispatch(
-      saveShippingInfo({ address, city, state, phone, country, pinCode })
+      saveShippingInfo({ address, city, state, phoneNo, country, pincode })
     );
 
     navigate("/order/confirm");
@@ -86,8 +86,8 @@ const Shipping = () => {
                 type="number"
                 placeholder="Pin Code"
                 required
-                value={pinCode}
-                onChange={(e) => setPinCode(e.target.value)}
+                value={pincode}
+                onChange={(e) => setPincode(e.target.value)}
               />
             </div>
             <div>
@@ -96,8 +96,8 @@ const Shipping = () => {
                 type="number"
                 placeholder="Phone No."
                 required
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={phoneNo}
+                onChange={(e) => setPhoneNo(e.target.value)}
               />
             </div>
             <div>

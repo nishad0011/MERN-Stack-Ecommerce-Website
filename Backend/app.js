@@ -20,6 +20,13 @@ app.use("/api/v1", user);
 const order = require("./routes/orderRoute")
 app.use("/api/v1", order);
 
+const payment = require("./routes/paymentRoute")
+app.use("/api/v1", payment);
+
+app.get("/api/razorkey", (req, res) => {
+    res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
+})
+
 // Middleware for error
 const errorMiddleware = require("./middleware/errorMiddleware");
 app.use(errorMiddleware);

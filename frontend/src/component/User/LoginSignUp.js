@@ -78,8 +78,8 @@ const LoginSignUp = () => {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
-  const redirect = location.search ? ("/" + location.search.split("=")[1]) : "/profile"
-  console.log("redirect = ", redirect)
+  // const redirect = location.search ? ("/" + location.search.split("=")[1]) : "/profile"
+  // console.log("redirect = ", redirect)
 
   useEffect(() => {
     if (error && (error != "Please Login to access resource")) {
@@ -87,7 +87,7 @@ const LoginSignUp = () => {
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate(redirect, { replace: true });
+      navigate("/profile", { replace: true });
     }
 
   }, [dispatch, error, alert, isAuthenticated])
