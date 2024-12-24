@@ -1,0 +1,50 @@
+
+.orderDetailsPage{
+    height: auto;
+    margin: auto;
+    width: 90%;
+    background-color: white;
+    /* display: grid;
+    grid-template-columns: 6fr 3fr; */
+}
+.orderDetailsContainer>div>h1{
+    margin: 1vmax;
+    margin-top: 8vmax;
+    padding: 3vmax;
+    font: 500 3vmax "Roboto";
+    color: white;
+    background-color: tomato;
+    text-align: center;
+}
+.title{
+    margin: 1vmax;
+    padding: 2vmax;
+    padding-left: 4vmax;
+    font: 300 2vmax "Roboto";
+    border:1px solid black;
+    margin-bottom: 0;
+}
+.orderDetailsContainerBox > div >p{
+    box-sizing: border-box;
+    margin-left: 1vmax;
+    padding: 0.5vmax;
+    width: 30%;
+    text-align: left;
+    font: 1.5vmax "Roboto";
+    border: 1px solid rgba(0, 0, 0, 0.184);
+
+}
+.orderDetailsContainerBox > div >span{
+    box-sizing: border-box;
+    padding: 0.5vmax;
+    width: 30%;
+    text-align: left;
+    font: 1.5vmax "Roboto";
+    border: 1px solid rgba(0, 0, 0, 0.184);
+}
+.orderDetailsContainerBox > div{
+    justify-content: start;
+    margin: auto;
+    display: flex;
+
+}

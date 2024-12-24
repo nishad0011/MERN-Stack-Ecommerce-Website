@@ -13,7 +13,6 @@ const SuccessMessage = () => {
     <>
       <div className="orderSuccess">
         <FaCheckCircle />
-
         <div>Your Order has been placed Successfully</div>
         <Link to="/orders/me">View All Orders</Link>
       </div>

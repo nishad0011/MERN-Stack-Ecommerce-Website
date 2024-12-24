@@ -11,7 +11,6 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
     const amount = req.body.totalPrice
     const currency = "INR"
 
-
     const instance = myModule.instance
     myPayment = await instance.orders.create({
         "amount": amount,

@@ -141,7 +141,6 @@ exports.createReview = catchAsyncErrors(async (req, res, next) => {
     let total = Number(0);
     product.reviews.forEach(rev => {
         total += Number(rev.rating);
-
     })
     product.ratings = total / product.reviews.length;
 

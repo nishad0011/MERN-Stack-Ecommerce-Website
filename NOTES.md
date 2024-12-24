@@ -44,6 +44,11 @@ INSTALLS:
                 cloudinary
                 country-state-city
                 react-razorpay
+
+                react-app-rewired
+                --save-dev crypto-browserify stream-browserify assert stream-http https-browserify os-browserify url buffer process
+                --save-dev webpack-shell-plugin-next
+                node-polyfill-webpack-plugin
             (--legacy-peer-deps  ) //Add this if errors
 
     -npm list -g (check installed global packages)
@@ -138,3 +143,5 @@ STAGES:
     28. Add to cart functionality on Product details page.
     29. Created Cart View Page
     30. Created checkout and confirm order page
+    31. Created order handling and payment methods and order success page
+    32. Created Review submit handling and Single Order Details Page

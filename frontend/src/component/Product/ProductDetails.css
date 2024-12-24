@@ -149,6 +149,24 @@
     font: 400 1.6vmax "Gill Sans";
 }
 
+
+.submitDialog{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.submitDialog>span{
+    padding: 2vmax;
+    padding-top: 0;
+}
+.submitDialog>textarea{
+    color: rgb(93, 93, 93);
+    border: 1px solid rgba(0, 0, 0, 0.474);
+    outline: none;
+    font:300 1rem "Roboto"
+}
+
 @media screen and (max-width:600px) {
     .ParentDiv{
         flex-direction: column;

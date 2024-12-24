@@ -25,12 +25,15 @@ import UpdatePassword from './component/User/UpdatePassword.js';
 import ForgotPassword from './component/User/ForgotPassword.js';
 import ResetPassword from './component/User/ResetPassword.js';
 
+
 import Cart from './component/Cart/Cart.js';
 import Shipping from './component/Cart/Shipping.js';
 import ConfirmOrder from './component/Cart/ConfirmOrder.js';
 import Payment from './component/Cart/Payment.js';
 import PaymentSuccess from './component/Cart/PaymentSuccess.js';
 import SuccessMessage from './component/Cart/SuccessMessage.js';
+import MyOrders from './component/Order/MyOrders.js';
+import OrderDetails from './component/Order/OrderDetails.js';
 
 function App() {
   React.useEffect(() => {
@@ -159,6 +162,20 @@ function App() {
           element:
             <ProtectedRoute >
               <SuccessMessage />
+            </ProtectedRoute>
+        },
+        {
+          path: `/orders/me`,
+          element:
+            <ProtectedRoute >
+              <MyOrders />
+            </ProtectedRoute>
+        },
+        {
+          path: `/order/:id`,
+          element:
+            <ProtectedRoute >
+              <OrderDetails />
             </ProtectedRoute>
         },
       ]

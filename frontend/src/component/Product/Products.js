@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Pagination from "react-js-pagination";
-import Slider from "@material-ui/core/slider";
+import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 
 import "./Products.css";
@@ -13,7 +13,6 @@ import {
   getProduct,
   getProductDetails,
 } from "../../actions/productAction";
-import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import Product from "../Home/ProductCard.js";
 

@@ -9,7 +9,6 @@ import { Typography } from "@material-ui/core";
 import "./confirmOrder.css";
 import { useEffect } from "react";
 import { useAlert } from "react-alert";
-import { createOrder, clearErrors } from "../../actions/orderAction.js";
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();

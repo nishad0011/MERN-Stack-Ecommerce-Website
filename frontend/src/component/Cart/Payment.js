@@ -15,14 +15,11 @@ const Payment = () => {
   const order = JSON.parse(sessionStorage.getItem("orderInfo"));
   const total = order.totalPrice * 100;
 
-  // const { newOrder, loading, error } = useSelector((state) => state.payment);
-  // dispatch(newPayment((order.totalPrice) * 100));
   const { user } = useSelector((state) => state.user);
 
   console.log("total = ", total);
 
   const Handler = async () => {
-    // console.log("order = ", order);
     const { data } = await axios.post("/api/v1/payment/process", {
       totalPrice: total,
     });
