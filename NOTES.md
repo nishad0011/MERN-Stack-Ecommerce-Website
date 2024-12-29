@@ -145,5 +145,7 @@ STAGES:
     30. Created checkout and confirm order page
     31. Created order handling and payment methods and order success page
     32. Created Review submit handling and Single Order Details Page
-    33. Created ADMIN new porduct create page
-    34. Implemented delete product funtionality in delete button in all products view
+    33. Created ADMIN new product create page.
+    34. Implemented delete product funtionality in delete button in all products view.
+    35. Created update order page
+

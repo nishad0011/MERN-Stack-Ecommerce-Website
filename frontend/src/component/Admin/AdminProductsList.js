@@ -23,7 +23,7 @@ const AdminProductsList = () => {
 
   const { error, products, loading } = useSelector((state) => state.products);
 
-  const { error: deleteError, isDeleted, message, loading: deleteLoading } = useSelector(state => state.deleteProduct)
+  const { error: deleteError, isDeleted, message, loading: deleteLoading } = useSelector(state => state.product)
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 150, flex: 0.4 },
@@ -59,7 +59,7 @@ const AdminProductsList = () => {
           <>
             <Link
               className="LinkBtn"
-              to={`admin/product/${params.getValue(params.id, "id")}`}
+              to={`${window.location.origin}/admin/product/update/${params.getValue(params.id, "id")}`}
             >
               <MdEdit />
             </Link>
@@ -104,7 +104,6 @@ const AdminProductsList = () => {
   useEffect(() => {
 
     if (deleteError) {
-      console.log("delete error = ", deleteError)
       alert.error(message);
       dispatch(clearErrors());
     }

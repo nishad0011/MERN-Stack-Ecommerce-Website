@@ -7,6 +7,8 @@ import Sidebar from "./Sidebar.js";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
+  console.log("window.location.origin = ", window.location.origin);
+
   return (
     <>
       <div className="dashboard">

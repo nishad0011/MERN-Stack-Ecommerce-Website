@@ -39,6 +39,7 @@ import OrderDetails from './component/Order/OrderDetails.js';
 import AdminDashboard from './component/Admin/AdminDashboard.js';
 import AdminProductsList from './component/Admin/AdminProductsList.js';
 import NewProduct from './component/Admin/NewProduct.jsx';
+import UpdateProduct from './component/Admin/UpdateProduct.jsx';
 
 function App() {
   React.useEffect(() => {
@@ -201,6 +202,13 @@ function App() {
           element:
             <ProtectedRoute isAdmin={true}>
               <NewProduct />
+            </ProtectedRoute>
+        },
+        {
+          path: `/admin/product/update/:id`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <UpdateProduct />
             </ProtectedRoute>
         },
       ]
