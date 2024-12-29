@@ -1,6 +1,6 @@
 import React from 'react'
 import { ReactNavbar } from "overlay-navbar"
-import { FaBandcamp } from "react-icons/fa6";
+import { AiFillYuque } from "react-icons/ai";
 
 const Header = () => {
     return (
@@ -13,7 +13,7 @@ const Header = () => {
             link2Url="/products"
             link3Url="/contact"
             link4Url="/about"
-            logo={<FaBandcamp />}
+            logo={<AiFillYuque />}
             link1Family="Roboto"
             link2Family="Roboto"
             link3Family="Roboto"

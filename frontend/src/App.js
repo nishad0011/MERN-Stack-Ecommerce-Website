@@ -35,6 +35,11 @@ import SuccessMessage from './component/Cart/SuccessMessage.js';
 import MyOrders from './component/Order/MyOrders.js';
 import OrderDetails from './component/Order/OrderDetails.js';
 
+// Admin Paths
+import AdminDashboard from './component/Admin/AdminDashboard.js';
+import AdminProductsList from './component/Admin/AdminProductsList.js';
+import NewProduct from './component/Admin/NewProduct.jsx';
+
 function App() {
   React.useEffect(() => {
     WebFont.load({
@@ -67,10 +72,7 @@ function App() {
       element: <Layout />,
       // All routes here
       children: [
-        {
-          path: '/',
-          element: <Home />
-        },
+        { path: '/', element: <Home /> },
         {
           path: '/loadertest',
           element: <Loader />
@@ -112,7 +114,7 @@ function App() {
         {
           path: '/password/update',
           element:
-            <ProtectedRoute /* isAuthenticated={isAuthenticated} loading={loading} */>
+            <ProtectedRoute>
               <UpdatePassword />
             </ProtectedRoute>
         },
@@ -132,21 +134,21 @@ function App() {
         {
           path: '/shipping',
           element:
-            <ProtectedRoute /* isAuthenticated={isAuthenticated} */>
+            <ProtectedRoute>
               <Shipping />
             </ProtectedRoute>
         },
         {
           path: '/order/confirm',
           element:
-            <ProtectedRoute /* isAuthenticated={isAuthenticated} */ >
+            <ProtectedRoute >
               <ConfirmOrder />
             </ProtectedRoute>
         },
         {
           path: '/process/payment',
           element:
-            <ProtectedRoute /* isAuthenticated={isAuthenticated} */ >
+            <ProtectedRoute >
               <Payment />
             </ProtectedRoute>
         },
@@ -176,6 +178,29 @@ function App() {
           element:
             <ProtectedRoute >
               <OrderDetails />
+            </ProtectedRoute>
+        },
+
+        // Admin Routes
+        {
+          path: `/admin/dashboard`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <AdminDashboard />
+            </ProtectedRoute>
+        },
+        {
+          path: `/admin/products`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <AdminProductsList />
+            </ProtectedRoute>
+        },
+        {
+          path: `/admin/product/new`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <NewProduct />
             </ProtectedRoute>
         },
       ]

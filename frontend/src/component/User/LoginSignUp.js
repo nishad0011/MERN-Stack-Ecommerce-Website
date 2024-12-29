@@ -78,8 +78,6 @@ const LoginSignUp = () => {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
-  // const redirect = location.search ? ("/" + location.search.split("=")[1]) : "/profile"
-  // console.log("redirect = ", redirect)
 
   useEffect(() => {
     if (error && (error != "Please Login to access resource")) {

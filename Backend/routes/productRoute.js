@@ -1,6 +1,7 @@
 const express = require('express');
 const {
     getAllProducts,
+    getAllProductsAdmin,
     updateProduct,
     deleteProduct,
     getSingleProductDetails,
@@ -13,10 +14,13 @@ const { isAuthenticatedUser, authorizeRoles } = require('../middleware/authentic
 const router = express.Router();
 
 router.route("/products").get(getAllProducts);
-router.route("/product/new").post(isAuthenticatedUser, authorizeRoles('admin'), createProduct);
+
+//ADMIN Routes
+router.route("/admin/products").get(isAuthenticatedUser, authorizeRoles('admin'), getAllProductsAdmin);
+router.route("/admin/product/new").post(isAuthenticatedUser, authorizeRoles('admin'), createProduct);
 
 //Update, Delete and Get method on same route.
-router.route('/product/:id')
+router.route('/admin/product/:id')
     .put(isAuthenticatedUser, authorizeRoles('admin'), updateProduct)
     .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteProduct)
 
