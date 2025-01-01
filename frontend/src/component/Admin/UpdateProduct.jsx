@@ -46,7 +46,7 @@ const UpdateProduct = () => {
   const [category, setCategory] = useState("");
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState(null);
+  const [imagesPreview, setImagesPreview] = useState([]);
 
   const productId = params.id;
   const categories = [
@@ -60,7 +60,17 @@ const UpdateProduct = () => {
   ];
 
   useEffect(() => {
-    if (product && product._id !== productId) {
+    dispatch(getProductDetails(productId));
+    setName(product.name);
+    setDescription(product.description);
+    setPrice(product.price);
+    setCategory(product.category);
+    setStock(product.stock);
+    setOldImages(product.images);
+  }, []);
+
+  useEffect(() => {
+    if (productId != product._id || product.length == 0) {
       dispatch(getProductDetails(productId));
     } else {
       setName(product.name);
@@ -83,6 +93,7 @@ const UpdateProduct = () => {
     if (isUpdated) {
       alert.success(message);
       dispatch({ type: UPDATE_PRODUCT_RESET });
+      dispatch(getProductDetails(productId));
       navigate("/admin/products");
     }
   }, [
@@ -98,7 +109,6 @@ const UpdateProduct = () => {
 
   const updateProductSubmitHandler = (e) => {
     e.preventDefault();
-
     const form = JSON.stringify({
       name: name,
       price: price,
@@ -118,7 +128,7 @@ const UpdateProduct = () => {
 
     setImages([]);
     setImagesPreview([]);
-    setOldImages(null);
+    setOldImages([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
@@ -239,7 +249,7 @@ const UpdateProduct = () => {
                   type="submit"
                   disabled={loading ? true : false}
                 >
-                  Create Product
+                  Update Product
                 </button>
               </div>
             </form>

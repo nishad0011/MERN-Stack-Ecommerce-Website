@@ -3,7 +3,7 @@
     height: 100vh;
     background-color: white;
     display: grid;
-    grid-template-columns: 6fr 3fr;
+    grid-template-columns:2fr 6fr 3fr;
 }
 .confirmOrderPage > div:last-child{
     border-left: 1px solid rgb(0, 0, 0);
@@ -55,17 +55,6 @@
     box-sizing: border-box;
 
 }
-.orderSummary>button{
-    background-color: tomato;
-    color: white;
-    border: none;
-    display: flex;
-    margin: 2vmax auto 0px auto;
-    padding: 0.8vmax 4vmax;
-    width: 60%;
-    font: 400 1.5vmax "Roboto";
-    cursor: pointer;
-}
 .orderSummary>div>div>span,
 .orderSummaryTotal>span{
     box-sizing: border-box;
@@ -104,3 +93,39 @@
     }
 }
 
+.updateOrderFormContainer{
+    width: auto;
+    svg{
+        
+    position: relative;
+    color: tomato;
+    padding: 1rem;
+    font-size: 2;
+    display: inline;
+    }
+    select{     
+    display: inline;
+
+    outline: none;
+    border: none;
+    margin: auto;
+    width: 100%;
+    font:200 1.2rem "Roboto";
+    color: rgb(65, 65, 65);
+    }
+    button { 
+        background-color: tomato;
+        color: white;
+        border: none;
+        display: flex;
+        margin: 2vmax auto 0px auto;
+        padding: 0.8vmax 4vmax;
+        width: 60%;
+        font: 400 1.5vmax "Roboto";
+        cursor: pointer;
+    }
+    button:disabled { 
+        background-color: rgb(116, 116, 116);
+        cursor:not-allowed;
+    }
+}

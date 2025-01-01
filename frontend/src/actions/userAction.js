@@ -6,7 +6,6 @@ import {
     REGISTER_REQUEST,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    CLEAR_ERRORS,
     LOAD_USER_REQUEST,
     LOAD_USER_SUCCESS,
     LOGOUT_SUCCESS,
@@ -18,6 +17,11 @@ import {
     FORGOT_PASSWORD_SUCCESS,
     RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST,
     RESET_PASSWORD_SUCCESS,
+    ALL_USER_REQUEST, ALL_USER_SUCCESS, ALL_USER_FAIL,
+    UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, UPDATE_USER_RESET, UPDATE_USER_FAIL,
+    DELETE_USER_REQUEST, DELETE_USER_SUCCESS, DELETE_USER_RESET, DELETE_USER_FAIL,
+    USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_DETAILS_FAIL,
+    CLEAR_ERRORS,
 } from "../constants/userConstants"
 
 
@@ -83,6 +87,84 @@ export const loadUser = () => async (dispatch) => {
 
     } catch (error) {
         dispatch({ type: LOGIN_FAIL, payload: error.response.data.message })
+    }
+}
+
+// Load all Users (ADMIN)
+export const getAllUsers = () => async (dispatch) => {
+    try {
+        dispatch({ type: ALL_USER_REQUEST })
+
+        const { data } = await axios.get(
+            "/api/v1/admin/users"
+        )
+
+        dispatch({
+            type: ALL_USER_SUCCESS,
+            payload: data.users,
+        })
+
+    } catch (error) {
+        dispatch({ type: ALL_USER_FAIL, payload: error.response.data.message })
+    }
+}
+
+// Single User Details (ADMIN)
+export const getUserDetails = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: USER_DETAILS_REQUEST })
+
+        const { data } = await axios.get(
+            `/api/v1/admin/users/${id}`
+        )
+
+        dispatch({
+            type: USER_DETAILS_SUCCESS,
+            payload: data.user,
+        })
+
+    } catch (error) {
+        dispatch({ type: USER_DETAILS_FAIL, payload: error.response.data.message })
+    }
+}
+
+// Update User (ADMIN)
+export const updateUser = (id, userDetails) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_USER_REQUEST });
+
+        const config = { headers: { "Content-Type": "application/json" } }
+
+        const { data } = await axios.put(
+            `/api/v1/admin/users/${id}`,
+            userDetails,
+            config
+        )
+
+        dispatch({
+            type: UPDATE_USER_SUCCESS,
+            payload: data.success,
+        })
+    } catch (error) {
+        dispatch({ type: UPDATE_USER_FAIL, payload: error.response.data.message })
+    }
+}
+
+// Delete User (ADMIN)
+export const deleteUser = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_USER_REQUEST });
+
+        const { data } = await axios.delete(
+            `/api/v1/admin/users/${id}`
+        )
+
+        dispatch({
+            type: DELETE_USER_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({ type: DELETE_USER_FAIL, payload: error.response.data.message })
     }
 }
 

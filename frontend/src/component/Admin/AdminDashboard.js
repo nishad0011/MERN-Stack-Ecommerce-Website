@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Doughnut, Line } from "react-chartjs-2";
+import { useAlert } from "react-alert";
+
+import { getAllOrders, clearErrors as clearOrderErrors } from "../../actions/orderAction.js";
+import { getProductsAdmin, clearErrors as clearProductErrors } from "../../actions/productAction.js";
 
 import Sidebar from "./Sidebar.js";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
-  console.log("window.location.origin = ", window.location.origin);
+  const dispatch = useDispatch()
+  const alert = useAlert()
+
+  const { products, error: productsError } = useSelector(state => state.products)
+  const { orders, error: ordersError } = useSelector(state => state.allOrders)
+  const { user } = useSelector(state => state.products)
+
+  useEffect(() => {
+    dispatch(getProductsAdmin())
+    dispatch(getAllOrders())
+  }, []);
+
+  useEffect(() => {
+    if (ordersError) {
+      alert.error(ordersError);
+      dispatch(clearOrderErrors());
+    }
+    if (productsError) {
+      alert.error(productsError);
+      dispatch(clearProductErrors());
+    }
+
+  }, [dispatch, alert, ordersError, productsError]);
 
   return (
     <>
@@ -27,11 +54,11 @@ const AdminDashboard = () => {
           <div className="dashboardSummary2">
             <Link to="/admin/products">
               <p>Product</p>
-              <p>50</p>
+              <p>{products && products.length}</p>
             </Link>
             <Link to="/admin/orders">
               <p>Orders</p>
-              <p>4</p>
+              <p>{orders && orders.length}</p>
             </Link>
             <Link to="/admin/users">
               <p>Users</p>

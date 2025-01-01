@@ -31,7 +31,6 @@
     width: 30%;
     text-align: left;
     font: 1.5vmax "Roboto";
-    border: 1px solid rgba(0, 0, 0, 0.184);
 
 }
 .orderDetailsContainerBox > div >span{
@@ -40,7 +39,6 @@
     width: 30%;
     text-align: left;
     font: 1.5vmax "Roboto";
-    border: 1px solid rgba(0, 0, 0, 0.184);
 }
 .orderDetailsContainerBox > div{
     justify-content: start;

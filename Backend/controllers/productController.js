@@ -58,8 +58,9 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     } else {
         images = req.body.images
     }
+    // console.log(" req.body.images.length = ", req.body.images.length);
 
-    if (images !== undefined) {
+    if (req.body.images.length !== 0) {
         // Deleting old images
         for (let i = 0; i < product.images.length; i++) {
             await cloudinary.v2.uploader.destroy(product.images[i].public_id)
@@ -82,6 +83,10 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
         }
 
         req.body.images = imagesLink
+    }
+    //Else use same photos 
+    else {
+        req.body.images = product.images
     }
 
     product = await Product.findByIdAndUpdate(

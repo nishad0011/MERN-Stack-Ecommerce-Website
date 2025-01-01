@@ -253,8 +253,6 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
         role: req.body.role,
     }
 
-    console.log(newUserData);
-
     const user = await User.findByIdAndUpdate(
         req.params.id,
         newUserData,
@@ -281,12 +279,16 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
     }
 
     //Cloudinary data handling
-
+    if (user.avatar.public_id != "") {
+        const imageId = user.avatar.public_id;
+        await cloudinary.v2.uploader.destroy(imageId)
+    }
 
     await user.deleteOne();
 
     res.status(200).json({
         success: true,
+        message: "User deleted successfully",
         user
     })
 })

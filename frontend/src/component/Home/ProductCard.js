@@ -5,6 +5,8 @@ import { Rating } from "@material-ui/lab";
 
 
 const ProductCard = ({ product }) => {
+    // console.log("product.images=", product.images);
+
     // Stars Options
     const options = {
         value: product.ratings,
@@ -15,7 +17,10 @@ const ProductCard = ({ product }) => {
 
     return (
         <Link className='productCard' to={`/product/${product._id}`}>
-            <img src={product.images[0].url} alt={product.name} />
+            {product.images.length !== 0 ?
+                (<img src={product.images[0].url} alt={product.name} />)
+                : null
+            }
             <p>{product.name}</p>
             <div>
                 <Rating {...options} /><span className='productCardSpan'>{product.numOfReviews} Reviews</span>

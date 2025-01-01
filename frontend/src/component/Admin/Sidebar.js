@@ -55,7 +55,7 @@ const Sidebar = () => {
           </p>
         </Link>
 
-        <Link to={"/admin/review"}>
+        <Link to={"/admin/reviews"}>
           <p>
             <MdOutlineRateReview /> Review
           </p>

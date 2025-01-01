@@ -60,13 +60,13 @@ const OrderDetails = () => {
                 <p
                   className={
                     order.paymentInfo &&
-                    order.paymentInfo.status === "Successful"
+                      order.paymentInfo.status === "Successful"
                       ? "greenColor"
                       : "redColor"
                   }
                 >
                   {order.paymentInfo &&
-                  order.paymentInfo.status === "Successful"
+                    order.paymentInfo.status === "Successful"
                     ? "PAID"
                     : "NOT PAID"}
                 </p>

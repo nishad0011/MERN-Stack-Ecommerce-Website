@@ -40,6 +40,11 @@ import AdminDashboard from './component/Admin/AdminDashboard.js';
 import AdminProductsList from './component/Admin/AdminProductsList.js';
 import NewProduct from './component/Admin/NewProduct.jsx';
 import UpdateProduct from './component/Admin/UpdateProduct.jsx';
+import AdminOrders from './component/Admin/AdminOrders.jsx';
+import UpdateOrder from './component/Admin/UpdateOrder.jsx';
+import AdminUsersList from './component/Admin/AdminUsersList.jsx';
+import AdminUserUpdate from './component/Admin/AdminUserUpdate.jsx';
+import AdminReviews from './component/Admin/AdminReviews.jsx';
 
 function App() {
   React.useEffect(() => {
@@ -209,6 +214,41 @@ function App() {
           element:
             <ProtectedRoute isAdmin={true}>
               <UpdateProduct />
+            </ProtectedRoute>
+        },
+        {
+          path: `/admin/orders`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <AdminOrders />
+            </ProtectedRoute>
+        },
+        {
+          path: `/admin/order/update/:id`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <UpdateOrder />
+            </ProtectedRoute>
+        },
+        {
+          path: `/admin/users`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <AdminUsersList />
+            </ProtectedRoute>
+        },
+        {
+          path: `/admin/user/:id`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <AdminUserUpdate />
+            </ProtectedRoute>
+        },
+        {
+          path: `/admin/reviews`,
+          element:
+            <ProtectedRoute isAdmin={true}>
+              <AdminReviews />
             </ProtectedRoute>
         },
       ]

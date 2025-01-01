@@ -8,7 +8,7 @@ import { verify } from 'jsonwebtoken';
 
 
 const ProtectedRoute = ({ isAdmin = false, children }) => {
-    console.log("isAdmin = ", isAdmin);
+    // console.log("isAdmin = ", isAdmin);
 
     const navigate = useNavigate()
     const shouldNavigate = useRef(false);

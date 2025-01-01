@@ -7,7 +7,8 @@
     background-color: rgb(222, 222, 222);
 }
 .newProductContainer>h1{
-    margin-top: 2rem;
+    min-width:400px;
+    margin: 2rem auto none auto;
     box-sizing: border-box;
     font:500 2.5rem "Roboto";
     padding: 2rem;
@@ -19,6 +20,7 @@
     width: 35%;
 }
 .formContainer{
+    min-width:400px;
     background-color: white;
     width: 35%;
     height: auto;
@@ -62,6 +64,9 @@
     background-color: tomato;
     border: none;
     outline: none;
+}
+#createProdBtn:disabled{
+    cursor: not-allowed;
 }
 .formContainer>form>div>input,
 .formContainer>form>div>textarea,
