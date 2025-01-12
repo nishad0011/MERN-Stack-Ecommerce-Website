@@ -149,3 +149,4 @@ STAGES:
     34. Implemented delete product funtionality in delete button in all products view.
     35. Created update order page
     36. Created users list and user update pages for admin
+    37. Finishing touches. 

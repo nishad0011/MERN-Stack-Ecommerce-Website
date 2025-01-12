@@ -13,7 +13,7 @@ const CheckoutSteps = ({ activeSteps }) => {
 
     const steps = [
         {
-            label: <Typography>Shipping Details</Typography>,
+            label: <Typography className='checkoutStepsLabel'>Shipping Details</Typography>,
             icon: <MdLocalShipping />
 
         },
@@ -48,7 +48,7 @@ const CheckoutSteps = ({ activeSteps }) => {
                         key={index}>
                         <StepLabel
                             style={{
-                                color: activeSteps >= index ? "tomato" : "rgba(0,0,0,0.269)"
+                                color: activeSteps >= index ? "rgba(0,0,0,0.869)" : "rgba(0,0,0,0.269)"
                             }}
                             icon={items.icon}
                         >

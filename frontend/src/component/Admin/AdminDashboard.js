@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Doughnut, Line } from "react-chartjs-2";
 import { useAlert } from "react-alert";
 
 import { getAllOrders, clearErrors as clearOrderErrors } from "../../actions/orderAction.js";
 import { getProductsAdmin, clearErrors as clearProductErrors } from "../../actions/productAction.js";
+import { getAllUsers } from "../../actions/userAction.js";
 
 import Sidebar from "./Sidebar.js";
 import "./AdminDashboard.css";
@@ -17,12 +17,27 @@ const AdminDashboard = () => {
 
   const { products, error: productsError } = useSelector(state => state.products)
   const { orders, error: ordersError } = useSelector(state => state.allOrders)
-  const { user } = useSelector(state => state.products)
+  const { error: allUserErrors, users } = useSelector((state) => state.allUsers);
+
+
+  const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
     dispatch(getProductsAdmin())
     dispatch(getAllOrders())
+    dispatch(getAllUsers())
   }, []);
+
+  // Calculate amount
+  useEffect(() => {
+    if (orders) {
+      let tempTotal = 0
+      orders.forEach(order => {
+        tempTotal += order.totalPrice
+      });
+      setTotalAmount(tempTotal)
+    }
+  }, [orders]);
 
   useEffect(() => {
     if (ordersError) {
@@ -46,7 +61,7 @@ const AdminDashboard = () => {
           <div className="dashboardSummary">
             <div>
               <p>
-                Total Amount <br /> 2000
+                Total Orders <br /> {totalAmount}
               </p>
             </div>
           </div>
@@ -62,7 +77,7 @@ const AdminDashboard = () => {
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
-              <p>2</p>
+              <p>{users && users.length}</p>
             </Link>
           </div>
           <div className="charts"></div>

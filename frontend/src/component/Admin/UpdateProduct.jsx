@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useAlert } from "react-alert";
 
@@ -20,7 +20,6 @@ import {
   getProductDetails,
 } from "../../actions/productAction";
 import Metadata from "../layout/Metadata";
-import Loader from "../layout/Loader/Loader";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const UpdateProduct = () => {
@@ -31,7 +30,6 @@ const UpdateProduct = () => {
 
   const {
     error: updateError,
-    product: updatedProduct,
     loading,
     isUpdated,
     message,
@@ -51,11 +49,11 @@ const UpdateProduct = () => {
   const productId = params.id;
   const categories = [
     "Electronics",
-    "Laptop",
+    "Laptops",
     "Footwear",
     "Pants",
     "Shirts",
-    "Camera",
+    "Cameras",
     "Phones",
   ];
 
@@ -70,7 +68,7 @@ const UpdateProduct = () => {
   }, []);
 
   useEffect(() => {
-    if (productId != product._id || product.length == 0) {
+    if (productId !== product?._id || product.length === 0) {
       dispatch(getProductDetails(productId));
     } else {
       setName(product.name);
@@ -238,11 +236,6 @@ const UpdateProduct = () => {
                   ))}
                 </div>
               ) : null}
-              {/* <div id="imageShow">
-                {imagesPreview.map((image, index) => (
-                  <img key={index} src={image} alt="Product" />
-                ))}
-              </div> */}
               <div>
                 <button
                   id="createProdBtn"

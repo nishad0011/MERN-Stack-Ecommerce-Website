@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useAlert } from "react-alert";
 
@@ -24,9 +24,7 @@ const NewProduct = () => {
   const alert = useAlert();
   const navigate = useNavigate();
 
-  const { error, product, loading, success } = useSelector(
-    (state) => state.newProduct
-  );
+  const { error, loading, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -116,92 +114,96 @@ const NewProduct = () => {
         <div className="newProductContainer">
           <h1 className="productsListHeading">Create Product</h1>
           <div className="formContainer">
-            <form
-              className="newProductForm"
-              encType="multipart/form-data"
-              onSubmit={createProductSubmitHandler}
-            >
-              <div>
-                <FaPen />
-                <input
-                  type="text"
-                  placeholder="Product Name"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
+            {loading ? (
+              <Loader />
+            ) : (
+              <form
+                className="newProductForm"
+                encType="multipart/form-data"
+                onSubmit={createProductSubmitHandler}
+              >
+                <div>
+                  <FaPen />
+                  <input
+                    type="text"
+                    placeholder="Product Name"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
 
-              <div>
-                <HiOutlineCurrencyRupee />
-                <input
-                  type="number"
-                  placeholder="Price"
-                  required
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                />
-              </div>
+                <div>
+                  <HiOutlineCurrencyRupee />
+                  <input
+                    type="number"
+                    placeholder="Price"
+                    required
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
+                </div>
 
-              <div>
-                <MdOutlineDescription />
-                <textarea
-                  placeholder="Description"
-                  required
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  cols="30"
-                  rows="1"
-                />
-              </div>
+                <div>
+                  <MdOutlineDescription />
+                  <textarea
+                    placeholder="Description"
+                    required
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    cols="30"
+                    rows="1"
+                  />
+                </div>
 
-              <div>
-                <MdOutlineAccountCircle />
-                <select onChange={(e) => setCategory(e.target.value)}>
-                  <option value="">Choose Category</option>
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
+                <div>
+                  <MdOutlineAccountCircle />
+                  <select onChange={(e) => setCategory(e.target.value)}>
+                    <option value="">Choose Category</option>
+                    {categories.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <MdOutlineWarehouse />
+                  <input
+                    type="number"
+                    placeholder="Stock"
+                    required
+                    value={stock}
+                    onChange={(e) => setStock(e.target.value)}
+                  />
+                </div>
+
+                <div id="imageUpload">
+                  <input
+                    type="file"
+                    name="avatar"
+                    accept="image/*"
+                    onChange={createProductImageChangeHandler}
+                    multiple
+                  />
+                </div>
+                <div id="imageShow">
+                  {imagesPreview.map((image, index) => (
+                    <img key={index} src={image} alt="Avatar" />
                   ))}
-                </select>
-              </div>
-
-              <div>
-                <MdOutlineWarehouse />
-                <input
-                  type="number"
-                  placeholder="Stock"
-                  required
-                  value={stock}
-                  onChange={(e) => setStock(e.target.value)}
-                />
-              </div>
-
-              <div id="imageUpload">
-                <input
-                  type="file"
-                  name="avatar"
-                  accept="image/*"
-                  onChange={createProductImageChangeHandler}
-                  multiple
-                />
-              </div>
-              <div id="imageShow">
-                {imagesPreview.map((image, index) => (
-                  <img key={index} src={image} alt="Avatar" />
-                ))}
-              </div>
-              <div>
-                <button
-                  id="createProdBtn"
-                  type="submit"
-                  disabled={loading ? true : false}
-                >
-                  Create Product
-                </button>
-              </div>
-            </form>
+                </div>
+                <div>
+                  <button
+                    id="createProdBtn"
+                    type="submit"
+                    disabled={loading ? true : false}
+                  >
+                    Create Product
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>

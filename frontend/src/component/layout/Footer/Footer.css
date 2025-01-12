@@ -1,16 +1,26 @@
-footer{
-    margin-top: 10vmax;
+.footerContainer{
+    display: block;
+}
+#footer{
+    div>*{
+
+        margin-bottom: 1rem;
+    }
+    box-sizing: border-box;
     padding: 2vmax;
     background-color: rgb(34,33,33);
     color: white;
     display: flex;
     align-items: center;
+    width: 100%;
+    position: relative;
 }
 .logos{
-    padding: 0.8em;
+    padding: 1rem;
+    height: auto;
 }
 .logos :hover{
-    color: rgb(96, 96, 96);
+    color: aquamarine;
     transition-duration: 0.1s;
 
 }
@@ -18,20 +28,24 @@ p{
     text-align: center;
 }
 .leftFooter{
-    width:20%;
+    width:max(20%,15rem);
     text-align: center;
 }
 .leftFooter >h4{
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size:clamp(2rem, 5vw, 1.3rem);
 }
 .midFooter{
     width:60%;
+    font-size:clamp(1.2rem, 5vw, 1.3rem);
+
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .bottomFooter{
-    width:20%;
+    width:max(20%,15rem);
+    font-size:clamp(1.2rem, 5vw, 1.3rem);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,11 +56,10 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     line-height: 150%;
     text-decoration-line:none;
 }
-.bottomFooter>a:hover{
-    color:orangered;
+.bottomFooter>a:hover{color: aquamarine;
     transition-duration: 0.5s;
 }
-@media (max-width:480px){
+@media (max-width:600px){
     footer{
         flex-direction: column;
     }

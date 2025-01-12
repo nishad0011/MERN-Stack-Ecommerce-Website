@@ -1,6 +1,5 @@
 .dashboardContainer{
     width: auto;
-    display:flex;
     flex-direction: column;
     box-sizing: border-box;
 }
@@ -17,10 +16,13 @@
     font-size: 1rem !important; 
     width: 4rem!important;
     height: 2rem!important;
-    align-content: center !important;
-    text-align: center !important;
-    vertical-align: middle !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.LinkBtn:disabled:hover {
+    cursor: not-allowed;
+  }
 
 .LinkBtn:hover{
     color: tomato !important;

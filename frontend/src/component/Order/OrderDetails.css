@@ -12,8 +12,8 @@
     margin-top: 8vmax;
     padding: 3vmax;
     font: 500 3vmax "Roboto";
-    color: white;
-    background-color: tomato;
+    color: rgb(0, 0, 0);
+    background-color: aquamarine;
     text-align: center;
 }
 .title{
@@ -42,7 +42,6 @@
 }
 .orderDetailsContainerBox > div{
     justify-content: start;
-    margin: auto;
     display: flex;
 
 }

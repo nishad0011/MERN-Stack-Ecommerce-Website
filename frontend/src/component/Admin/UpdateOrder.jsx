@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 import { Typography } from "@material-ui/core";
@@ -16,17 +15,14 @@ import { getOrderDetails, updateOrder } from "../../actions/orderAction";
 import { clearErrors } from "../../actions/orderAction";
 
 const UpdateOrder = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
   const alert = useAlert();
 
   const { error, order, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
-  const user = useSelector((state) => state.user);
 
   const [state, setState] = useState("");
-  const [stateShow, setStateShow] = useState("");
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -42,7 +38,7 @@ const UpdateOrder = () => {
       alert.error(error);
       dispatch(clearErrors);
     }
-    if (order.length == 0) {
+    if (order.length === 0) {
       dispatch(getOrderDetails(params.id));
     }
   }, [params.id, dispatch, alert, error]);
@@ -60,29 +56,39 @@ const UpdateOrder = () => {
     }
   }, [updateError, isUpdated]);
 
+  useEffect(() => {
+    if (order?.length > 0) {
+      if (order._id !== params.id) {
+        dispatch(getOrderDetails(params.id));
+      }
+    } else {
+      dispatch(getOrderDetails(params.id));
+    }
+  }, []);
+
   return (
     <>
       <Metadata title={"Order Details"} />
-      <div className="confirmOrderPage">
+      <div className="updateOrderPage">
         <Sidebar />
         {loading ? null : (
           <>
             <div>
               <div className="confirmShippingArea">
-                <h2 className="title">Shipping info</h2>
+                <h2 className="updateOrderTitle">Shipping info</h2>
                 <div className="orderDetailsContainerBox">
                   <div>
-                    <p>Name :</p>
+                    <p>Name : </p>
                     <span>{order.user && order.user.name}</span>
                   </div>
                   <div>
-                    <p>Phone :</p>
+                    <p>Phone : </p>
                     <span>
                       {order.shippingInfo && order.shippingInfo.phoneNo}
                     </span>
                   </div>
                   <div>
-                    <p>Address :</p>
+                    <p>Address : </p>
                     <span>
                       {order.shippingInfo &&
                         `${order.shippingInfo.address}, ${order.shippingInfo.city}-${order.shippingInfo.pincode}, ${order.shippingInfo.state}, ${order.shippingInfo.country}`}
@@ -90,7 +96,7 @@ const UpdateOrder = () => {
                   </div>
                 </div>
               </div>
-              <h2 className="title">Payment info</h2>
+              <h2 className="updateOrderTitle">Payment info</h2>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p
@@ -111,7 +117,7 @@ const UpdateOrder = () => {
                   <p>Amount : </p>
                   <span>{order.totalPrice && order.totalPrice}</span>
                 </div>
-                <h2 className="title">Order Status</h2>
+                <h2 className="updateOrderTitle">Order Status</h2>
                 <div className="orderDetailsContainerBox">
                   <div>
                     <p
@@ -128,7 +134,7 @@ const UpdateOrder = () => {
               </div>
 
               <div className="confirmCartItems">
-                <h2 className="title">Cart items</h2>
+                <h2 className="updateOrderTitle">Cart items</h2>
                 <div className="confirmCartItemsContainer">
                   {order.orderItems &&
                     order.orderItems.map((item) => (
@@ -150,7 +156,8 @@ const UpdateOrder = () => {
               <div
                 className="orderSummary"
                 style={{
-                  display: order?.orderStatus == "Delivered" ? "none" : "block",
+                  display:
+                    order?.orderStatus === "Delivered" ? "none" : "block",
                 }}
               >
                 <Typography>Process Order</Typography>

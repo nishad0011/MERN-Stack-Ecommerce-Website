@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAlert } from 'react-alert';
@@ -14,7 +14,6 @@ const PaymentSuccess = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    const [show, setShow] = useState("")
 
     async function getPaymentDetails() {
         var { data } = await axios.get(`/api/v1/payment/getPaymentById/${params.id}`)
@@ -41,10 +40,8 @@ const PaymentSuccess = () => {
     var paymentDetails = null;
     var successful = null
     var myPayment = null
-    var orderResponse = null
 
     const { error, order, success } = useSelector((state) => state.newOrder)
-    const { user } = useSelector((state) => { return state.user })
 
     const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"))
     const shippingInfo = JSON.parse(localStorage.getItem("shippingInfo"))
@@ -67,7 +64,7 @@ const PaymentSuccess = () => {
         if (!order) {
             makeOrder()
         }
-    }, [order])
+    }, [order, makeOrder])
 
     useEffect(() => {
         if (success === true) {

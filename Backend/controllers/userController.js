@@ -4,7 +4,8 @@ const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail.js");
 const crypto = require("crypto");
-const cloudinary = require("cloudinary")
+const cloudinary = require("cloudinary");
+const { log } = require("console");
 
 
 //Register user
@@ -116,6 +117,9 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
         .update(req.params.token)
         .digest("hex");
 
+    console.log("In reset password:");
+    console.log("resetPasswordToken = ", resetPasswordToken);
+
     const user = await User.findOne({
         resetPasswordToken,
         resetPasswordExpire: { $gt: Date.now() },
@@ -178,12 +182,15 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 
 //Update User Profile
 exports.updateUserData = catchAsyncErrors(async (req, res, next) => {
+    // console.log("req.body = ", req.body);
+    // console.log("req.body.avatar type = ", typeof req.body.avatar);
+
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
     }
 
-    if (req.body.avatar != "") {
+    if (req.body.avatar != 'undefined' && req.body.avatar != "") {
         const user = await User.findById(req.user.id)
         const imageId = user.avatar.public_id;
 

@@ -243,6 +243,20 @@ exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
     })
 })
 
+// Get all reviews of a product
+exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
+    const product = await Product.findById(req.query.id);
+
+    if (!product) {
+        return next(new ErrorHandler("No Product found for given ID", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        reviews: product.reviews
+    })
+})
+
 // Delete Review
 exports.deleteReviews = catchAsyncErrors(async (req, res, next) => {
     const product = await Product.findById(req.query.productId);
@@ -253,16 +267,22 @@ exports.deleteReviews = catchAsyncErrors(async (req, res, next) => {
 
     const reviews = product.reviews.filter(rev => rev._id.toString() !== req.query.id.toString())
 
-    let total = Number(0);
-    reviews.forEach(rev => {
-        total += Number(rev.rating);
+    let ratings = 0
+    let numOfReviews = 0
+    if (reviews.length != 0) {
+        let total = Number(0);
+        reviews.forEach(rev => {
+            total += Number(rev.rating);
 
-    })
+        })
 
-    // Update avg rating and no of reviews
-    const ratings = total / reviews.length;
-    const numOfReviews = reviews.length;
-
+        // Update avg rating and no of reviews
+        ratings = total / reviews.length;
+        numOfReviews = reviews.length;
+    } else {
+        ratings = 0
+        numOfReviews = 0
+    }
     await Product.findByIdAndUpdate(req.query.productId, {
         reviews,
         ratings,
@@ -276,6 +296,5 @@ exports.deleteReviews = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true,
         message: "Review deleted Successfully",
-        reviews
     })
 })

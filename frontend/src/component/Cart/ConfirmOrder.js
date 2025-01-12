@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -7,13 +7,9 @@ import Metadata from "../layout/Metadata";
 import CheckoutSteps from "./CheckoutSteps.js";
 import { Typography } from "@material-ui/core";
 import "./confirmOrder.css";
-import { useEffect } from "react";
-import { useAlert } from "react-alert";
 
 const ConfirmOrder = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const alert = useAlert();
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
@@ -57,11 +53,11 @@ const ConfirmOrder = () => {
                 <span>{user.name}</span>
               </div>
               <div>
-                <p>Phone :</p>
-                <span>{shippingInfo.phone}</span>
+                <p>Phone : </p>
+                <span>{shippingInfo.phoneNo}</span>
               </div>
               <div>
-                <p>Address :</p>
+                <p>Address : </p>
                 <span>{fullAddress}</span>
               </div>
             </div>

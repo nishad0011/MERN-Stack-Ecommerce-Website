@@ -1,19 +1,36 @@
 .ParentDiv{
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 90vw;
+    margin: auto;
     margin-top: 10vh;
+    height: max(100vh,auto);
+}
+.imageBox{
+    display: flex;
+    height: clamp(25rem, 10vw, 100rem);
+    width: 130rem;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: clamp(0rem, 2vw, 5rem);
+    box-shadow: rgba(100, 100, 111, 0.627) 0px 7px 29px 0px;
 }
 .ProductDetails{
     display: flex;
     flex-direction: column;
-    width: 70vw;
-    height: 60vh;
-    padding:6vmax;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     justify-content: center;
-    box-sizing:border-box;
-    border:1px solid black;
+}
+.ProductDetails img{
+    object-fit:contain;
 }
 .detailsBlock {
-    width: 100%;
+    min-height: 30rem;
+    min-width: 50%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -22,19 +39,26 @@
     box-sizing: border-box;
 }
 
+.detailsBlock-1  {
+    width: 100%;
+    margin-bottom:2rem ;
+}
 .detailsBlock-1 > h2 {
     color: rgb(62, 62, 62);
     font: 600 2vmax "Roboto";
+    text-align: left;
 }
 .detailsBlock-1 > p {
     color: rgb(89, 89, 89);
     font: 400 1vmax "Roboto";
+    text-align: left;
 }
 
 .detailsBlock-2 {
+    width: 100%;
     display: flex;
     align-items: center;
-    font: 400 1.2vmax "Roboto";
+    font: 400 clamp(0.5rem, 3vmax, 1.5rem) "Roboto";
     border-top: 1px solid rgba(0, 0, 0, 0.264);
     border-bottom: 1px solid rgba(0, 0, 0, 0.264);
     padding: 1vmax;
@@ -45,7 +69,7 @@
     width:auto;
     margin: 1vmax;
     text-align: center;
-    font: 600 2vmax "Roboto";
+    font: 600 clamp(1rem, 5vmax, 2rem) "Roboto";
 }
 .detailsBlock-3 {
     width: 30vmax;
@@ -58,12 +82,21 @@
 }
 
 .detailsBlock-3-1-1 >button{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size:2rem;
     border: none;
-    background-color: rgb(81, 81, 81);
+    background-color: rgba(0, 0, 0, 0.083);
     cursor: pointer;
-    width: 3vmax;
-    height: 3vmax;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
+    transition: all 0.5s;
+}
+.detailsBlock-3-1-1 >button:hover{
+    background-color: rgba(0, 0, 0, 0.273);
 }
 .detailsBlock-3-1-1 >input{
     justify-self: center;
@@ -81,26 +114,50 @@
 
 .detailsBlock-3-1 >button:last-child{
     border: none;
-    background-color: rgb(19, 10, 187);
+    font: 800 clamp(1.5rem, 2vmax, 2rem) "Roboto";
+    background-color:aquamarine;
     cursor: pointer;
-    height: 3vmax;
-    width: 6vmax;
-    border-radius: 1.5vmax;
+    height: clamp(1.5rem, 1rem + 3vmax, 6rem);
+    width: clamp(9rem, 2rem + 10vmax, 10rem);
+    transition: var(--transition-all-point-five);
+}
+.detailsBlock-3-1 >button:last-child:hover{
+    background-color:rgb(109, 219, 182);
+    cursor: pointer;
 }
 
 .detailsBlock-3 > p {
     margin: 2vmax;
-    text-align: center;
-    font: 400 1.5vmax "Roboto";
+    margin-left: 0;
+    text-align: left;
+    font: 400 clamp(1.5rem,1vmax,5rem) "Roboto";
 }
 
 .detailsBlock-4  {
+    width: 100%;
     padding: 2vmax;
-    font: 800 1.2vmax "Roboto";
+    padding-left: 0;
+    font: 800 1.5rem "Roboto";
 }
 .detailsBlock-4 > p {
     padding: 1vmax;
-    font: 400 1vmax "Roboto";
+    padding-left: 0;
+    width: 100%;
+    text-align: left;
+    color: rgb(53, 53, 53);
+    font: 400  1.2rem "Roboto";
+}
+.submitReview{
+    border: 2px solid aquamarine;
+    font: 800 1.5rem "Roboto";
+    background-color:rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 5rem;
+    width: 10rem;
+    transition: var(--transition-all-point-five);
+}
+.submitReview:hover{
+    background-color:aquamarine;
 }
 
 .CarouselImage{
@@ -129,6 +186,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1vmax;
+    margin: 1rem;
 }
 .reviewCard>h3{
     padding: 1vmax;
@@ -167,16 +225,16 @@
     font:300 1rem "Roboto"
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
     .ParentDiv{
         flex-direction: column;
+        align-items: center;
     }
 
     .ProductDetails{
         display: flex;
         flex-direction: column;
         width: 100vw;
-        max-width: 100%;
         height: auto;
         justify-content: center;
         box-sizing:content-box;
@@ -185,6 +243,9 @@
     .CarouselImage{
         width: 80vw;
         height: auto;
+    }
+    .detailsBlock-3-1{
+        flex-direction: column;
     }
     .detailsBlock-1 > h2{
         font-size: 2em;

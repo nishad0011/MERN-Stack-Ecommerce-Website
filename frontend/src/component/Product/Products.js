@@ -17,12 +17,13 @@ import Loader from "../layout/Loader/Loader";
 import Product from "../Home/ProductCard.js";
 
 const categories = [
+  "All",
   "Electronics",
   "Laptop",
   "Footwear",
   "Pants",
   "Shirts",
-  "Camera",
+  "Cameras",
   "Phones",
 ];
 
@@ -32,7 +33,8 @@ const Products = () => {
   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 25000]);
+  const [maxPrice, setMaxPrice] = useState(100000);
+  const [price, setPrice] = useState([0, maxPrice]);
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
 
@@ -43,7 +45,10 @@ const Products = () => {
     setPrice(newPrice);
   };
   const categoryHandler = (category) => {
-    setCategory(category);
+    if (category == "All") {
+      setCategory("");
+    } else setCategory(category);
+    setCurrentPage(0);
   };
 
   const {
@@ -66,66 +71,82 @@ const Products = () => {
     }
 
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
+
   }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
 
-  if (loading) {
-    return <Loader />;
-  }
+  useEffect(() => {
+    //Set max price in price range
+    if (products.length > 0) {
+      let tempMaxPrice = 0;
+      products?.forEach((product) => {
+        if (product.price > tempMaxPrice) tempMaxPrice = product.price
+      })
+      setMaxPrice(tempMaxPrice)
+    }
+  }, [products])
 
   return (
     <Fragment>
       <Metadata title="PRODUCTS" />
 
       <h2 className="productsHeading">PRODUCTS</h2>
-      <div className="products">
-        {products.length ? (
-          products.map((product) => (
-            <Product key={product._id} product={product} />
-          ))
-        ) : (
-          <h1 className="noProdDiv">No Products Found</h1>
-        )}
-      </div>
+      <div className="sidebarProductsContainer">
+        <div className="filterBox">
+          <Typography>Price</Typography>
+          <div className="sliderDiv">
+            <Slider
+              value={price}
+              size="large"
+              onChange={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={maxPrice}
+              aria-label="Default"
+              step={50}
+            />
+          </div>
 
-      <div className="filterBox">
-        <Typography>Price</Typography>
-        <Slider
-          value={price}
-          onChangeCommitted={priceHandler}
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-          min={0}
-          max={25000}
-          aria-label="Default"
-          step={50}
-        />
-
-        <Typography>Categories</Typography>
-        <ul className="categoryBox">
-          {categories.map((category) => (
-            <li
-              className="category-link"
-              keys={category}
-              onClick={() => categoryHandler(category)}
-            >
-              {category}
-            </li>
-          ))}
-        </ul>
-
-        <fieldset>
+          <Typography>Categories</Typography>
+          <ul className="categoryBox">
+            {categories.map((category) => (
+              <li
+                className="category-link"
+                keys={category}
+                onClick={() => categoryHandler(category)}
+              >
+                {category}
+              </li>
+            ))}
+          </ul>
           <Typography>Ratings Above</Typography>
-          <Slider
-            value={ratings}
-            onChange={(e, newRatings) => {
-              setRatings(newRatings);
-            }}
-            aria-labelledby="continuous-slider"
-            valueLabelDisplay="auto"
-            min={0}
-            max={5}
-          />
-        </fieldset>
+          <div className="sliderDiv">
+            <fieldset>
+              <Slider
+                value={ratings}
+                onChange={(e, newRatings) => {
+                  setRatings(newRatings);
+                }}
+                aria-labelledby="continuous-slider"
+                valueLabelDisplay="auto"
+                min={0}
+                max={5}
+              />
+            </fieldset>
+          </div>
+        </div>
+
+        <div className="products">
+          {loading ? (
+            <Loader />
+          ) : products.length ? (
+            products.map((product) => (
+              <Product key={product._id} product={product} />
+            ))
+          ) : (
+            <h1 className="noProdDiv">No Products Found</h1>
+          )}
+        </div>
       </div>
 
       {resultPerPage < filteredProdCount && (

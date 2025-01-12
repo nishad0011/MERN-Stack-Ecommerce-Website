@@ -7,6 +7,7 @@ import {
     ADMIN_PRODUCT_SUCCESS,
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_FAIL,
+    PRODUCT_DETAILS_RESET,
     PRODUCT_DETAILS_SUCCESS,
     NEW_PRODUCT_REQUEST,
     NEW_PRODUCT_SUCCESS,
@@ -20,10 +21,19 @@ import {
     DELETE_PRODUCT_SUCCESS,
     DELETE_PRODUCT_FAIL,
     DELETE_PRODUCT_RESET,
+
     NEW_REVIEW_REQUEST,
     NEW_REVIEW_SUCCESS,
     NEW_REVIEW_FAIL,
     NEW_REVIEW_RESET,
+    DELETE_REVIEW_REQUEST,
+    DELETE_REVIEW_SUCCESS,
+    DELETE_REVIEW_RESET,
+    DELETE_REVIEW_FAIL,
+    ALL_REVIEWS_REQUEST,
+    ALL_REVIEWS_SUCCESS,
+    ALL_REVIEWS_FAIL,
+
     CLEAR_ERRORS
 } from "../constants/productConstants"
 
@@ -101,13 +111,11 @@ export const newProductReducer = (state = { product: [] }, action) => {
 }
 
 export const productDetailsReducer = (state = { product: {} }, action) => {
-    // console.log("in productDetailsReducer")
 
     switch (action.type) {
         case PRODUCT_DETAILS_REQUEST:
             return {
                 loading: true,
-                ...state
             }
         case PRODUCT_DETAILS_SUCCESS:
             return {
@@ -116,6 +124,39 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
             }
         case PRODUCT_DETAILS_FAIL:
             return {
+                loading: false,
+                error: action.payload
+            }
+        case PRODUCT_DETAILS_RESET:
+            return {
+                loading: true,
+                product: null
+            }
+        case CLEAR_ERRORS:
+            return {
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const allReviewsReducer = (state = { reviews: [] }, action) => {
+    switch (action.type) {
+        case ALL_REVIEWS_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            }
+        case ALL_REVIEWS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                reviews: action.payload.reviews
+            }
+        case ALL_REVIEWS_FAIL:
+            return {
+                ...state,
                 loading: false,
                 error: action.payload
             }
@@ -130,8 +171,6 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
 }
 
 export const deleteProductReducer = (state = {}, action) => {
-    // console.log("in productDetailsReducer")
-
     switch (action.type) {
         case DELETE_PRODUCT_REQUEST:
         case UPDATE_PRODUCT_REQUEST:
@@ -208,6 +247,40 @@ export const newReviewReducer = (state = {}, action) => {
             return {
                 ...state,
                 success: false,
+            }
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+
+export const deleteReviewReducer = (state = {}, action) => {
+    switch (action.type) {
+        case DELETE_REVIEW_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            }
+        case DELETE_REVIEW_SUCCESS:
+            return {
+                loading: false,
+                isDeleted: action.payload.success,
+                message: action.payload.message
+            }
+        case DELETE_REVIEW_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        case DELETE_REVIEW_RESET:
+            return {
+                ...state,
+                isDeleted: false,
             }
         case CLEAR_ERRORS:
             return {

@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { CgMouse } from "react-icons/cg";
 import "./home.css";
+import image from "../../ecom_logo_cleaned.png";
 import { useSelector, useDispatch } from "react-redux";
 
 import Product from "./ProductCard.js";
@@ -34,17 +35,19 @@ const Home = () => {
       <Metadata title="SUPERCOM" />
 
       <div className="banner">
-        <p>Welcome to Ecommerce</p>
-        <h1>Find Products Below</h1>
+        <img className="homeLogo" src={image} alt="logo" />
+        <h1>Welcome to Ecommerce</h1>
 
-        <a href="#container">
+        <a href="#homeheading">
           <button>
             Scroll <CgMouse />
           </button>
         </a>
       </div>
 
-      <h2 className="homeheading">Featured Products</h2>
+      <h2 className="homeheading" id="homeheading">
+        Featured Products
+      </h2>
 
       <div className="container" id="container">
         {products && products.map((product) => <Product product={product} />)}

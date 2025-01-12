@@ -14,11 +14,11 @@ import {
     ALL_ORDERS_FAIL,
     UPDATE_ORDERS_REQUEST,
     UPDATE_ORDERS_SUCCESS,
-    UPDATE_ORDERS_RESET,
+    // UPDATE_ORDERS_RESET,
     UPDATE_ORDERS_FAIL,
     DELETE_ORDERS_REQUEST,
     DELETE_ORDERS_SUCCESS,
-    DELETE_ORDERS_RESET,
+    // DELETE_ORDERS_RESET,
     DELETE_ORDERS_FAIL,
 } from "../constants/orderConstants";
 import axios from "axios";
@@ -145,11 +145,11 @@ export const getOrderDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: ORDER_DETAILS_REQUEST });
 
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }
+        // const config = {
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     }
+        // }
         const { data } = await axios.get(`/api/v1/order/${id}`);
 
         // console.log("data = ", data);

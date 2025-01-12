@@ -1,25 +1,53 @@
-import React from 'react'
-import { ReactNavbar } from "overlay-navbar"
-import { AiFillYuque } from "react-icons/ai";
+import React from "react";
+
+import { IoHomeOutline } from "react-icons/io5";
+import { AiOutlineProduct } from "react-icons/ai";
+import { IoIosClose } from "react-icons/io";
+import { IoMdSearch } from "react-icons/io";
+import { IoMenu } from "react-icons/io5";
+
+import "./Header.css";
 
 const Header = () => {
-    return (
-        <ReactNavbar
-            link1Text="Home"
-            link2Text="Product"
-            link3Text="Contact"
-            link4Text="About"
-            link1Url="/"
-            link2Url="/products"
-            link3Url="/contact"
-            link4Url="/about"
-            logo={<AiFillYuque />}
-            link1Family="Roboto"
-            link2Family="Roboto"
-            link3Family="Roboto"
-            link4Family="Roboto"
-        />
-    )
-}
+  return (
+    <>
+      <input type="checkbox" name="" id="cd_input" />
+      <label className="open_button" for="cd_input">
+        <IoMenu />
+      </label>
+      <div className="nav_div">
+        <label id="navbar_container" for="cd_input">
+          <nav className="headernavbar">
+            <ul>
+              <li className="close_button" id="close_icon">
+                <label className="" for="cd_input" id="closeBtn">
+                  <IoIosClose />
+                </label>
+              </li>
+              <li className="nav_li">
+                <a className="nav_a" href="/">
+                  <IoHomeOutline />
+                  Home
+                </a>
+              </li>
+              <li className="nav_li">
+                <a className="nav_a" href="/products">
+                  <AiOutlineProduct />
+                  Products
+                </a>
+              </li>
+              <li className="nav_li">
+                <a className="nav_a" href="/search">
+                  <IoMdSearch />
+                  Search
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </label>
+      </div>
+    </>
+  );
+};
 
-export default Header
+export default Header;

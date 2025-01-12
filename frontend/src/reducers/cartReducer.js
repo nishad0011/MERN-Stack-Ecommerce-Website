@@ -31,7 +31,6 @@ export const cartReducer = (state = { cartItems: [], shippingInfo: [] }, action)
         ...state,
         cartItems: state.cartItems.filter((i) => i.product !== action.payload),
       };
-      break;
 
     case SAVE_SHIPPING_INFO:
       return {

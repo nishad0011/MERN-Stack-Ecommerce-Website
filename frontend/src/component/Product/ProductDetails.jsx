@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import Carousel from "react-material-ui-carousel";
 import { useAlert } from "react-alert";
 import {
   Dialog,
@@ -19,10 +18,14 @@ import {
   getProductDetails,
   newReview,
 } from "../../actions/productAction";
+import {
+  NEW_REVIEW_RESET,
+  PRODUCT_DETAILS_RESET,
+} from "../../constants/productConstants.js";
 import { addItemsToCart } from "../../actions/cartAction.js";
 import ReviewCard from "./ReviewCard.js";
+import CustomCarousel from "./CustomCarousel.js";
 import Loader from "../layout/Loader/Loader";
-import { NEW_REVIEW_RESET } from "../../constants/productConstants.js";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -37,9 +40,19 @@ const ProductDetails = () => {
     (state) => state.newReview
   );
 
+  if (product) {
+    if (product._id !== params.id) {
+      console.log("reset proddetails ");
+      dispatch({ type: PRODUCT_DETAILS_RESET });
+      dispatch(getProductDetails(params.id));
+    }
+  }
+
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
+  const [options, setOptions] = useState([]);
+  const [images, setImages] = useState([]);
   const [comment, setComment] = useState("");
 
   // Product Quantity Counter
@@ -94,15 +107,24 @@ const ProductDetails = () => {
     }
 
     // Storing data in redux store
-    dispatch(getProductDetails(params.id));
   }, [dispatch, params.id, error, alert, reviewError, success]);
 
-  const options = {
-    value: product.ratings,
-    readOnly: true,
-    precision: 0.5,
-    size: "large",
-  };
+  useEffect(() => {
+    if (product) {
+      if (product.ratings != undefined) {
+        let obj = {
+          value: product.ratings,
+          readOnly: true,
+          precision: 0.5,
+          size: "large",
+        };
+        setOptions(obj);
+      }
+      if (product.images != undefined) {
+        setImages(product.images);
+      }
+    }
+  }, [product]);
 
   if (loading) {
     return <Loader />;
@@ -111,18 +133,9 @@ const ProductDetails = () => {
   return (
     <Fragment>
       <div className="ParentDiv">
-        <div className="ProductDetails">
-          <Carousel>
-            {product.images &&
-              product.images.map((item, i) => (
-                <img
-                  className="CarouselImage"
-                  key={item.url}
-                  src={item.url}
-                  alt={`${i} Slide`}
-                />
-              ))}
-          </Carousel>
+        <div className="imageBox">
+          {product?._id == params.id &&
+            (images.length == 0 ? null : <CustomCarousel images={images} />)}
         </div>
         <div className="detailsBlock">
           <div className="detailsBlock-1">
@@ -131,8 +144,12 @@ const ProductDetails = () => {
           </div>
 
           <div className="detailsBlock-2">
-            <Rating {...options} />
-            <span>{product.numOfReviews} Reviews</span>
+            {Object.keys(options).length == 0 ? null : (
+              <>
+                <Rating {...options} />
+                <span>{product.numOfReviews} Reviews</span>
+              </>
+            )}
           </div>
 
           <div className="detailsBlock-3">

@@ -81,7 +81,7 @@ const AdminUsersList = () => {
               <MdEdit />
             </Link>
             <Button
-              className="LinkBtn"
+              className="UserListLinkBtn"
               onClick={() =>
                 deleteUserHandler(params.getValue(params.id, "id"))
               }

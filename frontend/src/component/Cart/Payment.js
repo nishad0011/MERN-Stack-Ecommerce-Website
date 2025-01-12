@@ -1,16 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import axios from "axios";
 
-import CheckoutSteps from "./CheckoutSteps.js";
-import Metadata from "../layout/Metadata";
-import Loader from "../layout/Loader/Loader";
-import { newPayment, clearErrors } from "../../actions/paymentAction.js";
 
 const Payment = () => {
-  const dispatch = useDispatch();
-  const alert = useAlert();
+
+  var myStyle = { width: '100vw', height: '100vh' }
 
   const order = JSON.parse(sessionStorage.getItem("orderInfo"));
   const total = order.totalPrice * 100;
@@ -51,6 +47,10 @@ const Payment = () => {
   };
 
   window.addEventListener("load", Handler());
+  return (
+    <div className="razorpayDiv" style={myStyle}>
+    </div>
+  )
 };
 
 export default Payment;

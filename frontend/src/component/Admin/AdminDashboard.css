@@ -3,7 +3,6 @@
     max-width: 100%;
     display: grid;
     grid-template-columns: 1fr 5fr;
-    position: absolute;
 }
     /* border: 1px solid black; */
 
@@ -34,24 +33,25 @@
 }
 .dashboardSummary2{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     padding: 2rem;
     gap: 2em;
 }
 .dashboardSummary2 > a{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     padding: 2rem;
-    width: 5rem;
+    width: 15rem;
     height: 5rem;
-    border-radius: 50%;
+    border-radius: 2rem;
     flex-direction: column;
     justify-content:center;
     text-decoration: none;
-
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(100, 100, 111, 0.627) 0px 7px 29px 0px;
 }
 .dashboardSummary2 > a>p{
     font: 900 1.3rem "Roboto" ;
-    color: tomato;
+    color: rgb(62, 62, 62);
 
 }

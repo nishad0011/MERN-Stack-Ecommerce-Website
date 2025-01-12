@@ -10,7 +10,7 @@ import { FaBox } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineRateReview } from "react-icons/md";
 
-import logo from "../../ecom_logo.png";
+import logo from "../../ecom_logo_cleaned.png";
 
 import "./Sidebar.css";
 
@@ -29,10 +29,11 @@ const Sidebar = () => {
 
         <Link>
           <TreeView
+            className="treview"
             defaultCollapseIcon={<MdExpandLess />}
             defaultExpandIcon={<MdExpandMore />}
           >
-            <TreeItem nodeId="1" label="Products">
+            <TreeItem className="p1" nodeId="1" label="Products">
               <Link to="/admin/products">
                 <TreeItem nodeId="2" label="All" icon={<IoMdAdd />} />
               </Link>
@@ -57,7 +58,7 @@ const Sidebar = () => {
 
         <Link to={"/admin/reviews"}>
           <p>
-            <MdOutlineRateReview /> Review
+            <MdOutlineRateReview /> Reviews
           </p>
         </Link>
       </div>

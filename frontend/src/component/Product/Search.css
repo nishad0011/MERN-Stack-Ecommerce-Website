@@ -23,7 +23,7 @@
 }
 .searchBox>input[type="submit"]{
     text-transform: uppercase;
-    background-color: tomato;
+    background-color: aquamarine;
     border: none;
     padding: 1vmax;
     width: 10%;
@@ -35,5 +35,5 @@
     cursor: pointer;
 }
 .searchBox>input[type="submit"]:hover{
-    background-color: rgb(255, 52, 16);
+    background-color: rgb(76, 152, 127);
 }

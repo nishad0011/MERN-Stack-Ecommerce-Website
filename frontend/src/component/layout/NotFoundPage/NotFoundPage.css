@@ -1,0 +1,31 @@
+
+.notFoundHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 600 7rem "Roboto";
+    color: rgb(130, 255, 213);
+    margin-top: 5rem;
+}
+.notFoundText{
+    text-align: center;
+    font: 600 3rem "Roboto";
+    color: rgb(133, 133, 133);
+}
+.notFoundHomeBtn{
+    display: block;
+    width: 10rem;
+    height: 4rem;
+    margin: auto;
+    margin-top: 5vmax;
+    font: 600 2rem "Roboto";
+    color: white;
+    background-color: rgb(92, 92, 92);
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-all-point-five);
+}
+.notFoundHomeBtn:hover{
+    background-color: rgb(47, 47, 47);
+
+}

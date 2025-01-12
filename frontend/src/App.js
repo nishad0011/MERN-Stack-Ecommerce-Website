@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 // USER CREATED
 import Header from "./component/layout/Header/Header"
 import Footer from './component/layout/Footer/Footer';
+import NotFoundPage from './component/layout/NotFoundPage/NotFoundPage.jsx';
 import Home from './component/Home/Home';
 import ProductDetails from './component/Product/ProductDetails';
 import Products from './component/Product/Products.js';
@@ -18,6 +19,7 @@ import LoginSignUp from './component/User/LoginSignUp.js';
 import store from "./store.js"
 import { loadUser } from './actions/userAction.js';
 import UserOptions from "./component/layout/Header/UserOptions.js"
+import LoginBtn from "./component/layout/Header/LoginBtn.js"
 import Profile from "./component/User/Profile.js"
 import ProtectedRoute from "./component/Route/ProtectedRoute.js"
 import UpdateProfile from './component/User/UpdateProfile.js';
@@ -56,18 +58,15 @@ function App() {
     store.dispatch(loadUser())
   }, []);
 
-  const { isAuthenticated, loading, user } = useSelector(state => {
+  const { isAuthenticated, user } = useSelector(state => {
     return (state.user)
-  })
-  const { shippingInfo } = useSelector(state => {
-    return (state.cart)
   })
 
   function Layout() {
     return (
       <>
         <Header />
-        {isAuthenticated && <UserOptions user={user} />}
+        {isAuthenticated ? <UserOptions user={user} /> : <LoginBtn />}
         <Outlet />
         <Footer />
       </>
@@ -78,10 +77,22 @@ function App() {
       element: <Layout />,
       // All routes here
       children: [
+        {
+          path: '*',
+          element: <NotFoundPage />,
+        },
         { path: '/', element: <Home /> },
         {
           path: '/loadertest',
-          element: <Loader />
+          element: <div
+            style={{
+              width: "50vw",
+              margin: "auto",
+              height: "100vh",
+              boxSizing: "border-box",
+              border: "1px solid grey"
+            }}
+          ><Loader /></div>
         },
         {
           path: '/product/:id',

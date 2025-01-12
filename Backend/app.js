@@ -27,6 +27,7 @@ app.get("/api/razorkey", (req, res) => {
     res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
 })
 
+
 // Middleware for error
 const errorMiddleware = require("./middleware/errorMiddleware");
 app.use(errorMiddleware);

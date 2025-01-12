@@ -1,15 +1,24 @@
 .productsHeading{
     letter-spacing: 0.5vw;
     text-indent: 0.5vw;
-    margin:2vmax auto;
     width: auto;
     border-bottom: 1px solid rgba(0, 0, 0, 0.35);
-    padding: 2vmax;
-    font: 400 2vmax "Roboto";
+    padding: 3vmax;
+    font: 900 2.5vmax "Roboto";
     text-align: center;
+    background-color: aquamarine;
 }
-
+.sidebarProductsContainer{
+    margin: auto;
+    box-sizing: border-box;
+    max-width: 100rem;
+    padding: 2vw;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
 .products{
+    box-sizing: border-box;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     padding: 0 5vmax;
@@ -33,12 +42,13 @@
     display:flex;
     justify-content: center;
     padding: 0;
+    height: auto;
 
 }
 .page-item{
     background-color: rgb(255,255,255);
     list-style: none;
-    border:1px solid black;
+    border:2px solid rgb(195, 195, 195);
     padding: 1vmax 1.5vmax;
     transition: all 0.3s;
 }
@@ -55,36 +65,49 @@
     transition: all 0.3s;
 }
 .page-item:hover{
-    background-color: rgba(1, 1, 1, 0.361);
+    background-color:rgb(215, 215, 215);
 }
 .pageItemActive{
-    background-color: rgb(252, 64, 30);
+    background-color: aquamarine;
 }
 .pageLinkActive{
-    color: rgb(245, 245, 245);
+    color: rgb(0, 0, 0);
 }
 
 .filterBox{
-    width:10vmax;
-    position: absolute;
-    top: 10vmax;
-    left: 2vmax;
+    min-width:100%;
+}
+.filterBox p{
+    font-size: 1.5rem !important;
+    color: white;
+    padding: 1rem;
+    background-color: rgb(67, 67, 67) !important;
+}
+.sliderDiv{
+    box-sizing: inherit;
+    padding: 1rem;
+
 }
 
 .categoryBox{
     padding:0;
+    background-color: transparent;
+    margin: 0.8vmax;
+    height: auto;
+
 }
 .category-link{
     list-style:none;
-    text-align: center;
-    font: 400 1vmax Roboto;
-    margin: 0.4vmax;
+    text-align: left;
+    font: 400 1.5rem Roboto;
+    padding-left: 1rem;
+    margin: 0.8vmax;
     cursor: pointer;
     color: rgb(59, 59, 59);
     transition: all 0.4s;
 }
 .filterBox>fieldset{
-    border:1px solid rgb(150, 150, 150)
+    /* border:1px solid rgb(150, 150, 150) */
 }
 .category-link:hover{
     color: tomato;
