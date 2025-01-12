@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "Ecommerce",
+    "builds": [
+       { "src": "/Backend/app.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+       { "src": "/(.*)", "dest": "/frontend/app.js" }
+    ]
+ }
