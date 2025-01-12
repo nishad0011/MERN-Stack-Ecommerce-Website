@@ -42,6 +42,11 @@ const Header = () => {
                   Search
                 </a>
               </li>
+              <li className="nav_li">
+                <a className="nav_a" href="/loadertest">
+                  Loader Test
+                </a>
+              </li>
             </ul>
           </nav>
         </label>

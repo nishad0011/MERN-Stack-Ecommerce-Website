@@ -124,6 +124,7 @@
     margin:1vmax 0.5vmax;
     max-height: 2lh;
     font: 300 var(--card-font-size) "Roboto";
+    font-family: "Roboto";
     margin-bottom: 0;
     overflow: hidden;
     text-overflow: ellipsis;

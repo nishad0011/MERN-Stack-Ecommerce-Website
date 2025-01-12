@@ -1,5 +1,4 @@
 const app = require("./app");
-
 // Handling uncaught exceptions
 process.on("uncaughtException", (err) => {
     console.log(`Error: ${err.message}`);
@@ -7,9 +6,18 @@ process.on("uncaughtException", (err) => {
     process.exit(1);
 })
 
+// const WebFont = require("webfontloader")
+// WebFont.load({
+//     google: {
+//         families: ["Roboto", "Droid Sans", "Chilanka", "Open Sans"]
+//     }
+// })
+
 //Config file
-const dotenv = require('dotenv');
-dotenv.config({ path: "backend/config/config.env" });
+if (process.env.NODE_ENV !== "PRODUCTION") {
+    const dotenv = require('dotenv');
+    dotenv.config({ path: "backend/config/config.env" });
+}
 
 //Database connection
 const connectDatabase = require('./config/databaseConnect');
@@ -35,6 +43,14 @@ const server = app.listen(
     process.env.PORT,
     () => { console.log(`Server running on port http://localhost:${process.env.PORT}`) }
 );
+
+// // fonts
+// var WebFont = require('webfontloader');
+// WebFont.load({
+//     google: {
+//         families: ["Roboto", "Droid Sans", "Chilanka", "Open Sans"]
+//     }
+// });
 
 //DB connection error handle
 process.on('unhandledRejection', err => {

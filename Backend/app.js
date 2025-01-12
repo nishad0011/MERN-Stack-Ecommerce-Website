@@ -4,11 +4,17 @@ const app = express();
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
+const path = require("path")
 
 app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
+
+//Config file
+if (process.env.NODE_ENV !== "PRODUCTION") {
+    require('dotenv').config({ path: "backend/config/config.env" });
+}
 
 //Routes
 const products = require("./routes/productRoute");
@@ -27,6 +33,10 @@ app.get("/api/razorkey", (req, res) => {
     res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
 })
 
+app.use(express.static(path.join(__dirname, "../frontend/build")))
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"))
+})
 
 // Middleware for error
 const errorMiddleware = require("./middleware/errorMiddleware");
