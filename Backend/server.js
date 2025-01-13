@@ -1,4 +1,6 @@
 const app = require("./app");
+
+
 // Handling uncaught exceptions
 process.on("uncaughtException", (err) => {
     console.log(`Error: ${err.message}`);

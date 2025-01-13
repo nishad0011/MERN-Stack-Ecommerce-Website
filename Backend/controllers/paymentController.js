@@ -30,7 +30,7 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
     const isAuthentic = expectedSignature === razorpay_signature;
 
     if (isAuthentic) {
-        const url = `http://localhost:3000/process/payment/success/${razorpay_payment_id}`
+        const url = `${process.env.FRONTEND_URL}/process/payment/success/${razorpay_payment_id}`
 
         res.redirect(url);
     }

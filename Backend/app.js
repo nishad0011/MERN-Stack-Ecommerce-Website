@@ -33,10 +33,22 @@ app.get("/api/razorkey", (req, res) => {
     res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
 })
 
-app.use(express.static(path.join(__dirname, "../frontend/build")))
+
+// app.use(express.static(path.join(__dirname, "frontend","build")))
+// app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"))
+// })
+app.use(express.static(path.join(__dirname, "frontend", "build")))
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"))
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 })
+
+// app.get("/", (req, res) => {
+//     app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+//     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+// });
+
+
 
 // Middleware for error
 const errorMiddleware = require("./middleware/errorMiddleware");
