@@ -1,5 +1,0 @@
-// export const NEW_PAYMENT_REQUEST = "NEW_PAYMENT_REQUEST";
-// export const NEW_PAYMENT_SUCCESS = "NEW_PAYMENT_SUCCESS";
-// export const NEW_PAYMENT_FAIL = "NEW_PAYMENT_FAIL";
-
-// export const CLEAR_ERRORS = "CLEAR_ERRORS";

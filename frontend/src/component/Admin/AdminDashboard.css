@@ -1,0 +1,57 @@
+.dashboard{
+    width: 100vw;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+    /* border: 1px solid black; */
+
+.dashboardContainer{
+    border-left: 1px solid rgba(0, 0, 0, 0.528);
+    background-color: white;
+    padding: 3rem 0;
+}
+.dashboardContainer > h1{
+    color: rgba(0, 0, 0, 0.628);
+    font: 900 2rem "Roboto" ;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    padding: 1.5rem;
+}
+
+.dashboardSummary{
+    border: 1px solid rgba(0, 0, 0, 0.528);
+    margin: 3rem 0;
+}
+.dashboardSummary>div>p{
+    background-color: rgb(81, 81, 255);
+    color: white;
+    padding: 1.5rem;
+    font: 900 1.2rem "Roboto" ;
+
+}
+.dashboardSummary2{
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    gap: 2em;
+}
+.dashboardSummary2 > a{
+    /* border: 1px solid black; */
+    display: flex;
+    padding: 2rem;
+    width: 15rem;
+    height: 5rem;
+    border-radius: 2rem;
+    flex-direction: column;
+    justify-content:center;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(100, 100, 111, 0.627) 0px 7px 29px 0px;
+}
+.dashboardSummary2 > a>p{
+    font: 900 1.3rem "Roboto" ;
+    color: rgb(62, 62, 62);
+
+}

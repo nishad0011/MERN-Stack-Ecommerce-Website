@@ -1,0 +1,124 @@
+.sd{
+    position: fixed;
+    right:3vmax;
+    top: 3vmax;
+}
+.sdIcon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.open_button{
+    z-index: 3;
+    position: sticky;
+    display: block;
+    top: 0;
+    height: 0;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.open_button>svg{
+    background-color: transparent;
+    padding: 1vw;
+    position: sticky;
+    display: inline;
+    top: 1rem; 
+    left: 1rem;
+    font-size: 3.5rem;
+    color: hsl(160, 38%, 52%);
+}
+#cd_input{
+    display: none;
+}
+#cd_input:checked~.nav_div{
+    transform: none;
+
+}
+#cd_input:checked~.headernavbar{
+    transform: none;
+    backdrop-filter: blur(8px);
+}
+#cd_input:checked~.open_button{
+    display: none;
+}
+.nav_div{
+    height: 0;
+    position: sticky;
+    top: 0;  
+    transform: translateX(-100%);
+    overflow: visible;
+    z-index: 1050;
+    transition: all 0.5s;
+}
+#navbar_container{
+    z-index: 500;
+    height: 100vh;
+    width: 100%;
+    display: inline;
+    overflow: visible;
+    background-color: none;
+    transition: all 0.5s;
+    position: sticky;
+}
+.headernavbar{
+    backdrop-filter: none;
+    box-sizing: border-box;
+    height: 100vh;
+    /* position: sticky; */
+    top: 0;  
+    width: 100%;
+    background-color: transparent;
+    z-index: 1050;
+    label{
+        position: relative;
+        box-sizing: border-box;
+        background-color: transparent;
+        height: 100vh;
+        width: 100%;
+    }
+}
+ul{
+    width: min(100%,22rem);
+    background-color: rgba(0, 0, 0, 0.862);
+    height: 100vh;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+}
+.close_button{
+    label{
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+        text-align: end;
+    }
+    svg{
+        font-size: clamp(3rem, 40vw, 5rem);
+        color: aquamarine;
+        padding: 1vw;
+    }
+}
+
+.nav_li{
+    align-content: center;
+}
+.nav_a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 1rem;
+    color:white;
+    font: 100 clamp(1.5rem, 3vw, 1.6rem) "Roboto";
+    transition: all 0.5s;
+    svg{
+        font-size: 120%;
+        padding: 1rem;
+    }
+}
+.nav_a:hover{
+    color:aquamarine;
+    }

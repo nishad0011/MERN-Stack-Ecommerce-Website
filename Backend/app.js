@@ -12,8 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 //Config file
-if (process.env.NODE_ENV !== "PRODUCTION") {
-    require('dotenv').config({ path: "backend/config/config.env" });
+if (process.env.PROD !== "PROD") {
+    require('dotenv').config({ path: "Backend/config/config.env" });
 }
 
 //Routes
@@ -38,9 +38,10 @@ app.get("/api/razorkey", (req, res) => {
 // app.get("*", (req, res) => {
 //     res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"))
 // })
-app.use(express.static(path.join(__dirname, "frontend", "build")))
+
+app.use(express.static(path.join(__dirname, "../frontend", "build")))
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../frontend", "build", "index.html"));
 })
 
 // app.get("/", (req, res) => {

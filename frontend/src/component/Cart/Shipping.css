@@ -1,0 +1,98 @@
+.CheckotSteps{
+    position: absolute;
+    width: 100%;
+    div{
+        background-color: transparent;
+        .MuiTypography-body1 {
+            background-color: transparent;
+        }
+    }
+}
+.shippingContainer{
+    box-sizing: border-box;
+    width: 100vw;
+    max-width: 100%;
+    padding: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+}
+.shippingBox{
+    border-radius: 2vmax;
+    background-color: rgb(255, 255, 255);
+    width: 25vw;
+    height:90vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 3vmax auto;
+    border: 1px solid rgba(0, 0, 0, 0.598);
+}
+.shippingHeading{
+    text-align: center;
+    font:700 1.2em "Droid Sans";
+    color: rgba(0, 0, 0, 0.851);
+    padding: 1.3vmax;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.519);
+    width: 50%;
+    margin: auto;
+}
+.shipForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    padding: 1vmax;
+    height: 80%;
+    margin: auto;
+    transition: all 0.5s;
+}
+.shipForm>div{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.shipForm>div>input,
+.shipForm>div>select{
+    border-radius: 7px;
+    align-self: center;
+    height: 3.5vmax;
+    width: 100%;
+    margin: 0 0.3vmax;
+    padding: 0vmax 4vmax;
+    padding-right: 1vmax;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.234);
+    color: rgb(0, 0, 0);
+    font:300 1.2vmax "Droid Sans";
+    letter-spacing: 0.2vmax;
+    outline: none;
+}
+.shipForm>div>select{
+    cursor: pointer;
+}
+
+
+.shipForm>div>svg{
+    position: absolute;
+    transform: translateX(1vmax);
+    font-size: 1.6vmax;
+    color: rgba(0, 0, 0, 0.614);
+}
+.shippingBtn{
+    background-color: aquamarine;
+    color: white;
+    border: none;
+    margin-top: 2vmax;
+    padding: 0.8vmax 4vmax;
+    width: 80%;
+    font: 400 1.5vmax "Roboto";
+    cursor: pointer;
+    transition: var(--transition-all-point-five);
+}
+.shippingBtn:hover{
+    background-color: rgb(101, 203, 169);
+}

@@ -1,0 +1,130 @@
+.productsHeading{
+    letter-spacing: 0.5vw;
+    text-indent: 0.5vw;
+    width: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+    padding: 3vmax;
+    font: 900 2.5vmax "Roboto";
+    text-align: center;
+    background-color: aquamarine;
+}
+.sidebarProductsContainer{
+    margin: auto;
+    box-sizing: border-box;
+    max-width: 100rem;
+    padding: 2vw;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.products{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 5vmax;
+    justify-content: center;
+}
+.noProdDiv{
+    display: flex;
+    font: 800 1.5vmax "Roboto";
+    color: rgb(103, 103, 103);
+    height:15vmax;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginationBox{
+    display: flex;
+    justify-content: center;
+    margin:6vmax;
+}
+.pagination{
+    display:flex;
+    justify-content: center;
+    padding: 0;
+    height: auto;
+
+}
+.page-item{
+    background-color: rgb(255,255,255);
+    list-style: none;
+    border:2px solid rgb(195, 195, 195);
+    padding: 1vmax 1.5vmax;
+    transition: all 0.3s;
+}
+.page-item:first-child{
+    border-radius: 10px 0 0 10px;
+}
+.page-item:last-child{
+    border-radius: 0 10px 10px 0 ;
+}
+.page-link{
+    text-decoration: none;
+    font:400 1.1vmax Roboto;
+    color: rgb(38, 38, 38);
+    transition: all 0.3s;
+}
+.page-item:hover{
+    background-color:rgb(215, 215, 215);
+}
+.pageItemActive{
+    background-color: aquamarine;
+}
+.pageLinkActive{
+    color: rgb(0, 0, 0);
+}
+
+.filterBox{
+    min-width:100%;
+}
+.filterBox p{
+    font-size: 1.5rem !important;
+    color: white;
+    padding: 1rem;
+    background-color: rgb(67, 67, 67) !important;
+}
+.sliderDiv{
+    box-sizing: inherit;
+    padding: 1rem;
+
+}
+
+.categoryBox{
+    padding:0;
+    background-color: transparent;
+    margin: 0.8vmax;
+    height: auto;
+
+}
+.category-link{
+    list-style:none;
+    text-align: left;
+    font: 400 1.5rem Roboto;
+    padding-left: 1rem;
+    margin: 0.8vmax;
+    cursor: pointer;
+    color: rgb(59, 59, 59);
+    transition: all 0.4s;
+}
+.filterBox>fieldset{
+    /* border:1px solid rgb(150, 150, 150) */
+}
+.category-link:hover{
+    color: tomato;
+}
+
+.bg{
+    background-color: rgb(252, 64, 30);
+
+}
+
+@media screen and (max-width:640px) {
+    .filterBox{
+        width:20vmax;
+        position: static;
+        margin: auto;
+    }
+    .category-link{
+        font: 400 1.8vmax Roboto;
+    }
+}

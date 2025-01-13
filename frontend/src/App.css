@@ -1,0 +1,33 @@
+*{
+    scroll-behavior: smooth;
+    margin: 0;
+    iframe{
+        display: none;
+    }
+}
+:root {
+    --main-bg-color: rgb(43, 43, 43);
+    --header-font: clamp(1rem, 10vw, 2rem);
+    --button-font: clamp(0.3rem, 0.3rem + 3vw, 1.5rem);
+    --card-font-size: clamp(0.5rem, 5vw, 1.5rem);
+    --transition-all-point-five: all 0.5s;
+    }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.greenColor{
+    color: green;
+}
+.redColor{
+    color: red;
+}

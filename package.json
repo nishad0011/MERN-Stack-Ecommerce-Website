@@ -5,8 +5,9 @@
   "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js"
+    "dev": "nodemon backend/server.js",
+    "build":"npm install && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend",
+    "start": "node Backend/server.js"
   },
   "author": "Nishad",
   "license": "ISC",

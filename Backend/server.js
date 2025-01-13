@@ -16,9 +16,9 @@ process.on("uncaughtException", (err) => {
 // })
 
 //Config file
-if (process.env.NODE_ENV !== "PRODUCTION") {
+if (process.env.PROD !== "PROD") {
     const dotenv = require('dotenv');
-    dotenv.config({ path: "backend/config/config.env" });
+    dotenv.config({ path: "Backend/config/config.env" });
 }
 
 //Database connection

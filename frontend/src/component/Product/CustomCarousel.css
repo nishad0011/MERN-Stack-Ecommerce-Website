@@ -1,0 +1,62 @@
+.ProductDetails{
+    position:relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+}
+.indexShow{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+.ProductDetails button{
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    border-radius: 50%;
+    font-size: 3rem;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: all 0.5s;
+}
+.ProductDetails button:hover{
+    background-color: rgba(0, 0, 0, 0.283);
+}
+.ProductDetails button:focus{
+    border: 2px solid black;
+}
+
+
+.slides{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    overflow: visible;
+}
+.slides img{
+    display: none;
+    object-fit: contain;
+}
+@keyframes fade {
+    from{
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
+img.displaying{
+    width: 100%;
+    margin: auto;
+    display: inline-block;
+    animation-name: fade;
+    animation-duration: 0.5s;
+}

@@ -117,8 +117,8 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
         .update(req.params.token)
         .digest("hex");
 
-    console.log("In reset password:");
-    console.log("resetPasswordToken = ", resetPasswordToken);
+    // console.log("In reset password:");
+    // console.log("resetPasswordToken = ", resetPasswordToken);
 
     const user = await User.findOne({
         resetPasswordToken,
