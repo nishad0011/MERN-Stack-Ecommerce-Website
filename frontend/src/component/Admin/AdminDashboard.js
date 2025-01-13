@@ -6,7 +6,7 @@ import { useAlert } from "react-alert";
 
 import { getAllOrders, clearErrors as clearOrderErrors } from "../../actions/orderAction.js";
 import { getProductsAdmin, clearErrors as clearProductErrors } from "../../actions/productAction.js";
-import { getAllUsers } from "../../actions/userAction.js";
+import { clearErrors, getAllUsers } from "../../actions/userAction.js";
 
 import Sidebar from "./Sidebar.js";
 import "./AdminDashboard.css";
@@ -26,7 +26,7 @@ const AdminDashboard = () => {
     dispatch(getProductsAdmin())
     dispatch(getAllOrders())
     dispatch(getAllUsers())
-  }, []);
+  }, [dispatch]);
 
   // Calculate amount
   useEffect(() => {
@@ -44,12 +44,16 @@ const AdminDashboard = () => {
       alert.error(ordersError);
       dispatch(clearOrderErrors());
     }
+    if (allUserErrors) {
+      alert.error(allUserErrors);
+      dispatch(clearErrors());
+    }
     if (productsError) {
       alert.error(productsError);
       dispatch(clearProductErrors());
     }
 
-  }, [dispatch, alert, ordersError, productsError]);
+  }, [dispatch, alert, ordersError, productsError, allUserErrors]);
 
   return (
     <>

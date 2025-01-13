@@ -51,11 +51,6 @@ export const getMyOrders = () => async (dispatch) => {
     try {
         dispatch({ type: MY_ORDERS_REQUEST });
 
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }
         const { data } = await axios.get(`/api/v1/orders/myorders`);
 
         // console.log("data = ", data);
