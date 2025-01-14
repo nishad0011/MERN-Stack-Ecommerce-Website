@@ -46,6 +46,8 @@ const server = app.listen(
     () => { console.log(`Server running on port http://localhost:${process.env.PORT}`) }
 );
 
+console.log(`backend origin : ${window.location.origin}`);
+
 // // fonts
 // var WebFont = require('webfontloader');
 // WebFont.load({

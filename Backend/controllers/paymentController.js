@@ -7,20 +7,15 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
     // console.log("req.body = ", req.body);
     // console.log("req.body.amount = ", req.body.amount);
 
-    console.log("inside proces payment function")
-    console.log("req.body.totalPrice = ", req.body.totalPrice);
-
     const amount = req.body.totalPrice
     const currency = "INR"
 
     const instance = myModule.instance
-    console.log("instance = ", instance);
 
     myPayment = await instance.orders.create({
         "amount": amount,
         "currency": currency
     })
-    console.log("myPayment = ", myPayment);
 
 
     res.status(200).json({ success: true, newOrder: myPayment })
@@ -38,7 +33,7 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
 
     if (isAuthentic) {
         if (process.env.PROD === "PROD") {
-            const url = `${process.env.FRONTEND_URL}/process/payment/success/${razorpay_payment_id}`
+            const url = `${window.location.origin}/process/payment/success/${razorpay_payment_id}`
             res.redirect(url);
         }
         else {
