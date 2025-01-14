@@ -6,16 +6,22 @@ var myModule = require('../server');
 exports.processPayment = catchAsyncErrors(async (req, res, next) => {
     // console.log("req.body = ", req.body);
     // console.log("req.body.amount = ", req.body.amount);
-    // console.log("req.body.totalPrice = ", req.body.totalPrice);
+
+    console.log("inside proces payment function")
+    console.log("req.body.totalPrice = ", req.body.totalPrice);
 
     const amount = req.body.totalPrice
     const currency = "INR"
 
     const instance = myModule.instance
+    console.log("instance = ", instance);
+
     myPayment = await instance.orders.create({
         "amount": amount,
         "currency": currency
     })
+    console.log("myPayment = ", myPayment);
+
 
     res.status(200).json({ success: true, newOrder: myPayment })
 });
