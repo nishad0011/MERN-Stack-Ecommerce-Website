@@ -7,9 +7,9 @@
 }
 :root {
     --main-bg-color: rgb(43, 43, 43);
-    --header-font: clamp(1rem, 10vw, 2rem);
-    --button-font: clamp(0.3rem, 0.3rem + 3vw, 1.5rem);
-    --card-font-size: clamp(0.5rem, 5vw, 1.5rem);
+    --header-font: 2rem;
+    --button-font: 1.5rem;
+    --card-font-size:  1.5rem;
     --transition-all-point-five: all 0.5s;
     }
 

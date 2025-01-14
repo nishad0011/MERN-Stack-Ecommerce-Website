@@ -33,11 +33,13 @@ p{
 }
 .leftFooter >h4{
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-font-size:clamp(2rem, 5vw, 1.3rem);
+/* font-size:clamp(2rem, 5vw, 1.3rem); */
+font-size:1.3rem;
 }
 .midFooter{
     width:60%;
-    font-size:clamp(1.2rem, 5vw, 1.3rem);
+    /* font-size:clamp(1.2rem, 5vw, 1.3rem); */
+    font-size:1.3rem;
 
     display: flex;
     flex-direction: column;
@@ -45,7 +47,8 @@ font-size:clamp(2rem, 5vw, 1.3rem);
 }
 .bottomFooter{
     width:max(20%,15rem);
-    font-size:clamp(1.2rem, 5vw, 1.3rem);
+    /* font-size:clamp(1.2rem, 5vw, 1.3rem); */
+    font-size:1.3rem;
     display: flex;
     flex-direction: column;
     align-items: center;

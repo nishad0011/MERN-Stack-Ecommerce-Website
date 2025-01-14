@@ -13,7 +13,7 @@
     width: 130rem;
     padding: 2rem;
     margin: 2rem;
-    border-radius: clamp(0rem, 2vw, 5rem);
+    border-radius: 5rem;
     box-shadow: rgba(100, 100, 111, 0.627) 0px 7px 29px 0px;
 }
 .ProductDetails{
@@ -58,7 +58,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    font: 400 clamp(0.5rem, 3vmax, 1.5rem) "Roboto";
+    /* font: 400 clamp(0.5rem, 3vmax, 1.5rem) "Roboto"; */
+    font: 400 1.5rem "Roboto";
     border-top: 1px solid rgba(0, 0, 0, 0.264);
     border-bottom: 1px solid rgba(0, 0, 0, 0.264);
     padding: 1vmax;
@@ -69,7 +70,8 @@
     width:auto;
     margin: 1vmax;
     text-align: center;
-    font: 600 clamp(1rem, 5vmax, 2rem) "Roboto";
+    /* font: 600 clamp(1rem, 5vmax, 2rem) "Roboto"; */
+    font: 600 2rem "Roboto";
 }
 .detailsBlock-3 {
     width: 30vmax;
@@ -114,7 +116,8 @@
 
 .detailsBlock-3-1 >button:last-child{
     border: none;
-    font: 800 clamp(1.5rem, 2vmax, 2rem) "Roboto";
+    /* font: 800 clamp(1.5rem, 2vmax, 2rem) "Roboto"; */
+    font: 800 1.5rem "Roboto";
     background-color:aquamarine;
     cursor: pointer;
     height: clamp(1.5rem, 1rem + 3vmax, 6rem);
@@ -130,7 +133,8 @@
     margin: 2vmax;
     margin-left: 0;
     text-align: left;
-    font: 400 clamp(1.5rem,1vmax,5rem) "Roboto";
+    /* font: 400 clamp(1.5rem,1vmax,5rem) "Roboto"; */
+    font: 400 2rem "Roboto";
 }
 
 .detailsBlock-4  {

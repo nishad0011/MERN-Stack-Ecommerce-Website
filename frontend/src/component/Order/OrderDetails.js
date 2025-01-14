@@ -28,6 +28,7 @@ const OrderDetails = () => {
 
   if (loading) return <Loader />;
 
+
   return (
     <>
       <Metadata title={"Order Details"} />
@@ -35,6 +36,13 @@ const OrderDetails = () => {
         <div className="orderDetailsContainer">
           <div>
             <h1 component="h1">Order #{order && order._id}</h1>
+            <h2 className="title">Shipping Info</h2>
+            <div className="orderDetailsContainerBox">
+              <div>
+                <p>Order Date :</p>
+                <span>{order?.createdAt && order.createdAt}</span>
+              </div>
+            </div>
             <h2 className="title">Shipping Info</h2>
             <div className="orderDetailsContainerBox">
               <div>

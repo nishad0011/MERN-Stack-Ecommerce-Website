@@ -97,7 +97,8 @@ ul{
         text-align: end;
     }
     svg{
-        font-size: clamp(3rem, 40vw, 5rem);
+        /* font-size: clamp(3rem, 40vw, 5rem); */
+        font-size:5rem;
         color: aquamarine;
         padding: 1vw;
     }
@@ -112,7 +113,8 @@ ul{
     text-decoration: none;
     padding: 1rem;
     color:white;
-    font: 100 clamp(1.5rem, 3vw, 1.6rem) "Roboto";
+    /* font: 100 clamp(1.5rem, 3vw, 1.6rem) "Roboto"; */
+    font: 100 1.6rem "Roboto";
     transition: all 0.5s;
     svg{
         font-size: 120%;

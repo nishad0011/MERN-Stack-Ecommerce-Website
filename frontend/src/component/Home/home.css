@@ -15,7 +15,8 @@
 }
 .homeLogo{
     padding: 2vmax;
-    width: clamp(5rem, 8vw, 8rem);
+    /* width: clamp(5rem, 8vw, 8rem); */
+    width: 8rem;
 }
 .banner>h1{
     margin: 5vmax;
@@ -36,8 +37,10 @@
     border-radius: 0;
     padding: 1vmax;
     transition: all 0.3s;
-    width: clamp(5rem, 12vw, 10rem);
-    font: 500 clamp(0.5rem, 5vw, 1.5rem) aquamarine;;
+    /* width: clamp(5rem, 12vw, 10rem); */
+    width: 10rem;
+    /* font: 500 clamp(0.5rem, 5vw, 1.5rem) aquamarine; */
+    font: 500 1.5rem aquamarine;
 }
 .banner>a>button:hover{
     background-color: rgba(255, 255, 255, 0);
@@ -70,7 +73,7 @@
     flex-grow: 0;
     flex-wrap: wrap;
     margin: 1vmax auto;
-    max-width: 100%;
+    width: 60%;
     justify-content: center;
 }
 
@@ -111,19 +114,21 @@
 }
 .productCardSpan{
     margin:0.5vmax;
-    font: 300 clamp(0.5rem, 5vw, 1rem) "Roboto";
+    /* font: 300 clamp(0.5rem, 5vw, 1rem) "Roboto"; */
+    font: 300 1rem "Roboto";
 }
 .productCard>span{
     margin:0.5vmax;
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: clamp(0.7rem, 5vw, 1.5rem);
+    /* font-size: clamp(0.7rem, 5vw, 1.5rem); */
+    font-size: 1.5rem;
     text-align: center;
 }
 .productCard>p{
     margin:1vmax 0.5vmax;
     max-height: 2lh;
-    font: 300 var(--card-font-size) "Roboto";
+    font: 300 1.5rem "Roboto";
     font-family: "Roboto";
     margin-bottom: 0;
     overflow: hidden;

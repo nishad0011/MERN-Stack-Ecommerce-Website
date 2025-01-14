@@ -1,8 +1,8 @@
 .homeloginBtn{
     width: clamp(6rem, 5rem + 5vw, 10rem);
-    height: clamp(3rem, 2.5rem + 2.5vw, 4rem);;
+    height: clamp(3rem, 2.5rem + 2.5vw, 4rem);
     text-align: center;
-    font:500 var(--button-font) "Roboto";
+    font:500 1.5rem "Roboto";
     color: hsl(160, 38%, 52%);
     border:1px solid hsl(160, 38%, 52%);
     background-color: transparent;
