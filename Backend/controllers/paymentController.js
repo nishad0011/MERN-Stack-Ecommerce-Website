@@ -33,7 +33,7 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
 
     if (isAuthentic) {
         if (process.env.PROD === "PROD") {
-            const url = `${window.location.origin}/process/payment/success/${razorpay_payment_id}`
+            const url = `https://supercom-malz.onrender.com/process/payment/success/${razorpay_payment_id}`
             res.redirect(url);
         }
         else {
