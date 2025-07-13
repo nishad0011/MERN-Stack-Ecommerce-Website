@@ -19,15 +19,20 @@ const Payment = () => {
     const { data } = await axios.post(`${window.location.origin}/api/v1/payment/process`, {
       totalPrice: total,
     });
-    const { key } = await axios.get(`${window.location.origin}/api/razorkey`);
+
+    const keydata = await axios.get(`${window.location.origin}/api/getrazorkey`);
+    const key = keydata.data.key;
+    console.log("key = ", key);
+    console.log("total = ", total);
+
     var options = {
       key: key, // Enter the Key ID generated from the Dashboard
-      amount: order.totalPrice * 100,
+      amount: total,
       currency: "INR",
       name: "E-commerce",
       description: "This is a Test Transaction",
       image:
-        "https://img.freepik.com/free-photo/link-icon-front-side_187299-39505.jpg?t=st=1733727235~exp=1733730835~hmac=5d242a06c08dfd0cab60530d941f418b324b9f94a1d7075e10e9a510d1ff8b11&w=740",
+        "https://res.cloudinary.com/dunyzhjku/image/upload/v1752299186/ecom_logo_cleaned_gtpycf.png",
       order_id: data.newOrder.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       callback_url: `${window.location.origin}/api/v1/payment/verify`,
       prefill: {
@@ -36,7 +41,7 @@ const Payment = () => {
         contact: "9000090000",
       },
       notes: {
-        address: "Eccommerce Corporate Office",
+        address: "Ecommerce Corporate Office",
       },
       theme: {
         color: "#3399cc",
@@ -44,12 +49,15 @@ const Payment = () => {
     };
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
+
   };
 
   window.addEventListener("load", Handler());
-  return (
+  return (<>
     <div className="razorpayDiv" style={myStyle}>
     </div>
+  </>
+
   )
 };
 

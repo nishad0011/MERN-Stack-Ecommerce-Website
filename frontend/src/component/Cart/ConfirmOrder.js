@@ -32,11 +32,12 @@ const ConfirmOrder = () => {
       tax,
     };
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
+    localStorage.setItem("orderInfo", JSON.stringify(data));
 
     navigate("/process/payment");
   };
 
-  const fullAddress = `${shippingInfo.address}, ${shippingInfo.city} - ${shippingInfo.pinCode}, ${shippingInfo.state}, ${shippingInfo.country}`;
+  const fullAddress = `${shippingInfo.address}, ${shippingInfo.city} - ${shippingInfo.pincode}, ${shippingInfo.state}, ${shippingInfo.country}`;
 
   return (
     <>

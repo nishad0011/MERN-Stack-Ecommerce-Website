@@ -29,7 +29,7 @@ app.use("/api/v1", order);
 const payment = require("./routes/paymentRoute")
 app.use("/api/v1", payment);
 
-app.get("/api/razorkey", (req, res) => {
+app.get("/api/getrazorkey", (req, res) => {
     res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
 })
 

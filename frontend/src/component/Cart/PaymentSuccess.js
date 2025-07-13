@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAlert } from 'react-alert';
@@ -9,6 +9,7 @@ import Loader from '../layout/Loader/Loader';
 
 // After successful payment verification
 const PaymentSuccess = () => {
+
     const params = useParams();
     const alert = useAlert();
     const dispatch = useDispatch();
@@ -16,13 +17,18 @@ const PaymentSuccess = () => {
 
 
     async function getPaymentDetails() {
+        // console.log("getPaymentDetails start");
         var { data } = await axios.get(`/api/v1/payment/getPaymentById/${params.id}`)
-        paymentDetails = data;
-        successful = paymentDetails.success
-        myPayment = paymentDetails.myPayment
+
+        setSuccessful(() => data.success)
+        setMyPayment(() => data.myPayment)
+
+        // console.log("getPaymentDetails end");
     }
-    async function callCreateOrderApi() {
-        const order = {
+    function callCreateOrderApi() {
+        // console.log("callCreateOrderApi start");
+
+        const orderDetals = {
             shippingInfo,
             paymentInfo: {
                 id: myPayment.id,
@@ -34,23 +40,65 @@ const PaymentSuccess = () => {
             shippingPrice: orderInfo.shippingCharges,
             totalPrice: orderInfo.totalPrice,
         }
-        dispatch(createOrder(order))
+        dispatch(createOrder(orderDetals))
+
+        // console.log("callCreateOrderApi end");
+    }
+    async function getOrderDetails() {
+        // console.log("getOrderdetils start");
+
+        setOrderInfo(() => JSON.parse(localStorage.getItem("orderInfo")))
+        setShippingInfo(() => JSON.parse(localStorage.getItem("shippingInfo")))
+        setCartItems(() => JSON.parse(localStorage.getItem("cartItems")))
+
+        // console.log("getOrderdetils end ");
+        // console.log("orderInfo = ", orderInfo);
+        // console.log("shippingInfo = ", shippingInfo);
+        // console.log("cartItems = ", cartItems);
+
+
     }
 
-    var paymentDetails = null;
-    var successful = null
-    var myPayment = null
+
+    const [successful, setSuccessful] = useState(null)
+    const [myPayment, setMyPayment] = useState(null)
+
+    const [orderInfo, setOrderInfo] = useState(null);
+    const [shippingInfo, setShippingInfo] = useState(null);
+    const [cartItems, setCartItems] = useState(null);
 
     const { error, order, success } = useSelector((state) => state.newOrder)
 
-    const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"))
-    const shippingInfo = JSON.parse(localStorage.getItem("shippingInfo"))
-    const cartItems = JSON.parse(localStorage.getItem("cartItems"))
+
 
     async function makeOrder() {
         await getPaymentDetails();
-        await callCreateOrderApi()
+
+        await getOrderDetails();
+
     }
+
+    useEffect(() => {
+        console.log("in useEffect for callCreateOrderApi()");
+        console.log("orderInfo = ", orderInfo);
+        console.log("shippingInfo = ", shippingInfo);
+        console.log("cartItems = ", cartItems);
+        console.log("Successful = ", successful);
+        console.log("myPayment = ", myPayment);
+
+
+        if (Boolean(orderInfo) &&
+            Boolean(shippingInfo) &&
+            Boolean(cartItems) &&
+            successful &&
+            Boolean(myPayment)
+        ) {
+            console.log("calling callCreateOrderApi()");
+            callCreateOrderApi()
+        } else {
+            console.log("not calling function");
+        }
+    }, [orderInfo, shippingInfo, cartItems])
 
     useEffect(() => {
         if (error) {
@@ -61,10 +109,9 @@ const PaymentSuccess = () => {
 
     //Only once
     useEffect(() => {
-        if (!order) {
-            makeOrder()
-        }
-    }, [order, makeOrder])
+        makeOrder()
+    }, [])
+
 
     useEffect(() => {
         if (success === true) {
@@ -79,4 +126,4 @@ const PaymentSuccess = () => {
     )
 }
 
-export default PaymentSuccess
+export default PaymentSuccess;

@@ -30,6 +30,7 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
 
     const isAuthentic = expectedSignature === razorpay_signature;
 
+    // console.log("host = ", req.headers.host);
 
     if (isAuthentic) {
         if (process.env.PROD === "PROD") {
@@ -41,6 +42,7 @@ exports.paymentVerification = catchAsyncErrors(async (req, res, next) => {
             res.redirect(url);
         }
     }
+
     else {
         res.status(400).json({ success: false })
     }

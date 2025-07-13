@@ -80,7 +80,7 @@
 .productCard{
     min-width: 5rem;
     max-width: 16rem;
-    max-height: 25rem;
+    max-height: auto;
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -127,7 +127,7 @@
 }
 .productCard>p{
     margin:1vmax 0.5vmax;
-    max-height: 2lh;
+    height: auto;
     font: 300 1.5rem "Roboto";
     font-family: "Roboto";
     margin-bottom: 0;

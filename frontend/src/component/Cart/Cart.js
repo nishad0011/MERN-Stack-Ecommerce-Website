@@ -54,6 +54,7 @@ const Cart = () => {
               <div className="cartContainer">
                 <CartItemCard
                   item={item}
+                  key={item}
                   removeItemFromCart={removeItemFromCart}
                 />
                 <div className="cartInput">

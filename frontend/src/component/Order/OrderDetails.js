@@ -40,7 +40,7 @@ const OrderDetails = () => {
             <div className="orderDetailsContainerBox">
               <div>
                 <p>Order Date :</p>
-                <span>{order?.createdAt && order.createdAt}</span>
+                <span>{order?.createdAt && (new Date(order.createdAt)).toLocaleString()}</span>
               </div>
             </div>
             <h2 className="title">Shipping Info</h2>
