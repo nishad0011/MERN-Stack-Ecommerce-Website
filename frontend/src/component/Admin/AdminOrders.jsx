@@ -93,6 +93,13 @@ const AdminOrders = () => {
         );
       },
     },
+    {
+      field: "date",
+      headerName: "Order Date",
+      type: "date",
+      flex: 0.5,
+      sortable: true,
+    },
   ];
 
   const rows = [];
@@ -103,6 +110,7 @@ const AdminOrders = () => {
         id: item._id,
         status: item.orderStatus,
         amount: item.totalPrice,
+        date: new Date(item.createdAt).toLocaleString(),
       });
     });
 

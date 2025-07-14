@@ -40,6 +40,8 @@ const ProductDetails = () => {
     (state) => state.newReview
   );
 
+  const { user } = useSelector((state) => state.user);
+
   if (product) {
     if (product._id !== params.id) {
       console.log("reset proddetails ");
@@ -180,9 +182,11 @@ const ProductDetails = () => {
           <div className="detailsBlock-4">
             Description: <p>{product.description}</p>
           </div>
-          <button onClick={submitReviewToggle} className="submitReview">
-            Submit Review
-          </button>
+          {user ? (
+            <button onClick={submitReviewToggle} className="submitReview">
+              Submit Review
+            </button>
+          ) : null}
         </div>
       </div>
       <div>

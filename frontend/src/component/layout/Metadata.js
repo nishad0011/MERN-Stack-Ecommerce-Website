@@ -5,6 +5,8 @@ const Metadata = ({ title }) => {
     return (
         <Helmet>
             <title>{title}</title>
+            <link rel="icon" href="public/ecom_logo_cleaned.png" />
+
         </Helmet>
     )
 }
